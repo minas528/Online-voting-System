@@ -1,7 +1,7 @@
 # Online Voting system
 
 this system works as a full functional voting system from start to the end of the vote.
-** The website will have three kind of users: **
+__ The website will have three kind of users: __
 - Administrators,
 - Competing parties and
 - voters or end users.
