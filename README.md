@@ -1,6 +1,6 @@
 # Online Voting system
 
-this system works as a full functional voting system from start to the end of the vote.
+this system works as a full functional voting system from start to the end of the vote.    
 **The website will have three kind of users:**
 - Administrators,
 - Competing parties and
