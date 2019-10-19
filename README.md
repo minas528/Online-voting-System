@@ -14,7 +14,7 @@ this system works as a full functional voting system from start to the end of th
 -**Parties:**
      - fill a registration form and bring upload their legal documents
      - Present their ideas
-     - Debate online with other parties
+     - Debate online with other parties      
 -**Voters:**    
     - asking for voting registration
     - register to specific vote and take the card(online card)
