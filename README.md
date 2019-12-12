@@ -35,3 +35,9 @@ this system works as a full functional voting system from start to the end of th
     - Assistive devices to improve accessibility for electors with disabilities
     - because it saves time and paper, and avoid chances of electoral malpractices.
     - Removal of authentication questions so voter identification is most similar to the traditional process
+    
+## Previous work and their problems
+There are about three types of voting systems: **paper-based, direct-ecording electronic(DRE) and online**
+The problems with the paper-based was that there was wastage of paper and material and the labor work. The problem with the online voting system is mainly security; security of the system, the users and the votes. In order to solve these, we need to have user authentiaction and make sure a user can only vote once and build a more secure voting system.  
+
+
