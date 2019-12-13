@@ -57,3 +57,7 @@ The problems with the paper-based was that there was wastage of paper and materi
 
 
 >>>>>>> 167298b99796d0f211a50019ce1b7cf3ea8b57a6
+## The legal system in Ethiopia
+Ethiopia follows a parliamentary system. It conducts a general election every five years of which diffrent political parties compete for majority votes.
+## The ruling party will consequently recive majority seats in HPR and is responsible in designating the prime minister from their party.
+The prime minister should be 21 and above to be eligible. And must be an Ethiopian citizen residing there.
