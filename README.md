@@ -42,8 +42,6 @@ this system works as a full functional voting system from start to the end of th
 There are about three types of voting systems: **paper-based, direct-recording electronic(DRE) and online**
 The problems with the paper-based was that there was wastage of paper and material and the labor work. The problem with the online voting system is mainly ***security***; security of the system, the users and the votes. In order to solve these, we need to have user authentiaction and make sure a user can only vote once and build a more secure voting system.  
 
-
->>>>>>> 167298b99796d0f211a50019ce1b7cf3ea8b57a6
 ## The legal system in Ethiopia
 Ethiopia follows a parliamentary system. It conducts a general election every five years of which diffrent political parties compete for majority votes.
 ## The ruling party will consequently recive majority seats in HPR and is responsible in designating the prime minister from their party.
