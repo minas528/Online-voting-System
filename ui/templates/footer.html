@@ -1,33 +1,63 @@
-{{define "footer"}}
+{{ define "footer.l" }}
     <!-- Footer -->
-    <footer class="page-footer font-small unique-color-dark pt-4">
+    <footer class="footer">
 
-        <!-- Footer Elements -->
-        <div class="container">
-
-            <!-- Call to action -->
-            <ul class="list-unstyled list-inline text-center py-2">
-                <li class="list-inline-item">
-                    <h5 class="mb-1">Register for free</h5>
-                </li>
-                <li class="list-inline-item">
-                    <a href="#!" class="btn btn-outline-white btn-rounded">Sign up!</a>
-                </li>
-            </ul>
-            <!-- Call to action -->
-
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Footer Elements -->
-
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-            <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-
     </footer>
-    <!-- Footer -->
-{{end}}
+    <!--/ footer end  -->
+
+    <!-- link that opens popup -->
+
+    <!-- form itself end-->
+    <form id="test-form" class="white-popup-block mfp-hide">
+        <div class="popup_box ">
+            <div class="popup_inner">
+                <div class="popup_header">
+                    <h3>Get Free Quote</h3>
+                </div>
+                <div class="custom_form">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <div class="col-xl-12">
+                            <input type="email" placeholder="Email">
+                        </div>
+                        <div class="col-xl-12">
+                            <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                        </div>
+                        <div class="col-xl-12">
+                            <button type="submit" class="boxed-btn3">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- form itself end -->
+
+    <script src="../assets/web/assets/jquery/jquery.min.js"></script>
+    <script src="../assets/tether/tether.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/smooth-scroll/smooth-scroll.js"></script>
+    <script src="../assets/puritym/js/script.js"></script>
+
+
 
 </body>
 </html>
+
+{{end}}

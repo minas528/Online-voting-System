@@ -1,0 +1,48 @@
+{{ define "upload.post" }}
+    {{ template "nav-bar" . }}
+    {{ template "post.upload.content" . }}
+    {{ template "footer.l" .}}
+{{end}}
+
+{{ define "post.upload.content" }}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h2>Add New Posts</h2>
+        </div>
+        <div class="container">
+            <form method="POST" action="/upost" enctype="multipart/form-data">
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Party Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Category Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="writer" class="col-sm-2 col-form-label">Writer</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="writer" id="writer" placeholder="Writer Name">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="catimg" class="col-sm-2 col-form-label">Upload Image <em>upload only mp4 videos</em></label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control-file" name="catimg" id="catimg">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-dark float-right">Add Post</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+
+{{end}}

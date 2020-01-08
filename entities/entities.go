@@ -14,6 +14,13 @@ type Events struct {
 	Competitors []Parties `gorm:"many2many;parties"`
 }
 
+type Post struct {
+	Name string `gorm:"type:varchar(200);not null"`
+	Writer string `gorm:"type:varchar(200);not null"`
+	Disc string `gorm:"type:varchar(200);not null"`
+	Vid string `gorm:"type:varchar(200);not null"`
+}
+
 type Parties struct {
 	Name string `gorm:"type:varchar(255); not null"`
 	Logo string `gorm:"type:varchar(255)"`
