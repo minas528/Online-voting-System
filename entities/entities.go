@@ -15,6 +15,7 @@ type Events struct {
 }
 
 type Post struct {
+	ID int
 	Name string `gorm:"type:varchar(200);not null"`
 	Writer string `gorm:"type:varchar(200);not null"`
 	Disc string `gorm:"type:varchar(200);not null"`
