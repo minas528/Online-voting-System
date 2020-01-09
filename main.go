@@ -3,7 +3,6 @@ package main
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-
 	eventRepo "github.com/minas528/Online-voting-System/Event/repository"
 	eventServ "github.com/minas528/Online-voting-System/Event/service"
 	"github.com/minas528/Online-voting-System/delivery/http/handler"
@@ -34,17 +33,17 @@ func RoutesForAdmin()  {
 }
 func main()  {
 
-	dbconn,err := gorm.Open("postgres","postgres://postgres:minpass@localhost:9090/votes?sslmode=disable")
+	dbconn,err := gorm.Open("postgres","postgres://postgres:berekettussa@localhost:8080/votes?sslmode=disable")
 	if err != nil{
 		panic(err)
 	}
 
 	defer dbconn.Close()
 
-	//errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
-	//if 0 < len(errs) {
-	//	panic(errs)
-	//}
+	/*errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
+	if 0 < len(errs) {
+		panic(errs)
+	}*/
 
 
 
