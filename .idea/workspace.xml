@@ -164,11 +164,23 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1067" />
     <option name="width" value="971" />
     <option name="height" value="1087" />
+=======
+<<<<<<< HEAD
+  <component name="ProjectId" id="1W94yKWNmW7uP6zWuKbg5tMI1aV" />
+=======
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="945" />
+    <option name="height" value="1096" />
+>>>>>>> 80f9d40b85adf80cf05414d045589b013e7b348f
   </component>
+>>>>>>> 22a1904d57f4055e35f6cb753c2113699a2fb359
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -307,8 +319,16 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/ui/assets/fonts" />
+=======
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Hidag_Voting-nati" />
+>>>>>>> 80f9d40b85adf80cf05414d045589b013e7b348f
     <property name="list.type.of.created.stylesheet" value="CSS" />
+>>>>>>> 22a1904d57f4055e35f6cb753c2113699a2fb359
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />

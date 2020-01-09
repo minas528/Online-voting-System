@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+
 	eventRepo "github.com/minas528/Online-voting-System/Event/repository"
 	eventServ "github.com/minas528/Online-voting-System/Event/service"
 	"github.com/minas528/Online-voting-System/delivery/http/handler"
@@ -44,6 +45,8 @@ func main()  {
 	//if 0 < len(errs) {
 	//	panic(errs)
 	//}
+
+
 
 	postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)
