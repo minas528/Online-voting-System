@@ -10,10 +10,12 @@ type EventServiceImple struct {
 	eventRepo Event.EventRepostory
 }
 
-func NewPostService(evnetrepo Event.EventRepostory) *EventServiceImple {
+
+
+func NewEventService(evnetrepo Event.EventRepostory) *EventServiceImple {
 	return &EventServiceImple{eventRepo: evnetrepo}
 }
-func (esi *EventServiceImple)Posts() ([]entities.Events, []error){
+func (esi *EventServiceImple)Events() ([]entities.Events, []error){
 	events,errs := esi.eventRepo.Events()
 	if len(errs)>0 {
 		log.Println("serv err")
@@ -21,7 +23,7 @@ func (esi *EventServiceImple)Posts() ([]entities.Events, []error){
 	}
 	return events,errs
 }
-func (esi *EventServiceImple) Post(id uint) (*entities.Events, []error){
+func (esi *EventServiceImple) Event(id uint) (*entities.Events, []error){
 	evt ,errs := esi.eventRepo.Event(id)
 	if len(errs)>0{
 		return evt,errs
@@ -42,7 +44,7 @@ func (esi *EventServiceImple)DeleteEvent(id uint) (*entities.Events,[]error){
 	}
 	return evt,nil
 }
-func (esi *EventServiceImple)StorePost(events *entities.Events) (*entities.Events,[]error){
+func (esi *EventServiceImple)StoreEvent(events *entities.Events) (*entities.Events,[]error){
 	evt,errs := esi.eventRepo.StoreEvent(events)
 	if len(errs)>0 {
 		return nil,errs

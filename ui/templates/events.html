@@ -1,0 +1,38 @@
+{{ define "events"}}
+
+    {{template "nav-bar" .}}
+    {{template "events.content" . }}
+    {{template "footer.l"}}
+{{end}}
+
+{{define "events.content"}}
+    <section class="mbr-section mbr-section-small" id="pricing-table1-2" data-rv-view="3" style="background-color: rgb(255, 248, 224); padding-top: 4.5rem; padding-bottom: 4.5rem;">
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3" style="margin-bottom: 1em">
+                    {{range .}}
+                    <div class="card text-xs-center">
+                        <div class="card-header bg-success">ምርጫ 2012</div>
+                        <div class="card-block lead">
+                            <span></span><span></span> <small></small>
+                        </div>
+                        <div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Date</strong> June 20</li>
+                                <li class="list-group-item"><strong>Unlimited</strong> Users</li>
+                                <li class="list-group-item"><strong>15</strong> Voting centers</li>
+                            </ul>
+                        </div>
+                        <div class="card-block" style="align-items: center;align-content: center;alignment: center"><a href="#"class="btn badge-danger btn-secondary-outline">Register</a></div>
+                    </div>
+                    {{end}}
+                </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{{end}}

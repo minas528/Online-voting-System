@@ -39,8 +39,13 @@ func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 		pst.Writer = r.FormValue("writer")
 		pst.Disc = r.FormValue("description")
 
+<<<<<<< HEAD
 		mf, fh, err := r.FormFile("catimg")
 		if err != nil {
+=======
+		mf,fh,err := r.FormFile("vid")
+		if err != nil{
+>>>>>>> 22a1904d57f4055e35f6cb753c2113699a2fb359
 			panic(err)
 		}
 		defer mf.Close()
