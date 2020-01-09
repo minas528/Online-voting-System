@@ -36,7 +36,7 @@ func (ph *EventHandler) EventNew(w http.ResponseWriter, r *http.Request)  {
 
 
 
-		_,errs := ph.eveserv.StoreEvent(&entities.Events{})
+		_,errs := ph.eveserv.StoreEvent(&evt)
 		if errs !=nil {
 			panic(errs)
 		}

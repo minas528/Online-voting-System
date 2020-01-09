@@ -12,8 +12,14 @@ import (
 	"net/http"
 )
 
-
 var temp = template.Must(template.ParseGlob("ui/templates/*"))
+
+func login(w http.ResponseWriter, r *http.Request)  {
+	temp.ExecuteTemplate(w,"admin.voters",nil)
+}
+func signup(w http.ResponseWriter, r *http.Request)  {
+	temp.ExecuteTemplate(w,"signup",nil)
+}
 
 func index(w http.ResponseWriter, r *http.Request)  {
 	temp.ExecuteTemplate(w,"",nil)
@@ -34,7 +40,7 @@ func main()  {
 
 	defer dbconn.Close()
 
-	//errs := dbconn.CreateTable(&entities.Post{},&entities.Events{}).GetErrors()
+	//errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
 	//if 0 < len(errs) {
 	//	panic(errs)
 	//}
@@ -60,6 +66,9 @@ func main()  {
 
 	http.HandleFunc("/events",eventHandle.Events)
 	http.HandleFunc("/newevent",eventHandle.EventNew)
+
+	http.HandleFunc("/voters",login)
+	http.HandleFunc("/signup",signup)
 	http.ListenAndServe(":8181",nil)
 }
 
