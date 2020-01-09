@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
-	"github.com/minas528/Online-voting-System/delivery/http/handler"
-	"github.com/minas528/Online-voting-System/post/repository"
-	"github.com/minas528/Online-voting-System/post/service"
+	"../../../github.com/outThabox/Online-voting-System/delivery/http/handler"
+	"../../../github.com/outThabox/Online-voting-System/post/repository"
+	"../../../github.com/outThabox/Online-voting-System/post/service"
 	"html/template"
 	"net/http"
 )
@@ -21,7 +21,7 @@ var temp = template.Must(template.ParseGlob("ui/templates/*"))
 
 func main()  {
 
-	dbconn,err := gorm.Open("postgres","postgres://postgres:minpass@localhost:9090/votes?sslmode=disable")
+	dbconn,err := gorm.Open("postgres","postgres://postgres:default@localhost:5432/votes?sslmode=disable")
 	if err != nil{
 		panic(err)
 	}
@@ -29,6 +29,11 @@ func main()  {
 	defer dbconn.Close()
 
 	//errs := dbconn.CreateTable(&entities.Post{}).GetErrors()
+	//if 0 < len(errs) {
+	//	panic(errs)
+	//}
+
+	//errs := dbconn.CreateTable(&entities.Vote{}).GetErrors()
 	//if 0 < len(errs) {
 	//	panic(errs)
 	//}
