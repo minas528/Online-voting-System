@@ -1,0 +1,60 @@
+{{ define "new.event" }}
+    {{ template "nav-bar" . }}
+    {{ template "new.event.content" . }}
+    {{ template "footer.l" .}}
+{{end}}
+
+{{ define "new.event.content" }}
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h2>Add New Events</h2>
+        </div>
+        <div class="container">
+            <form method="POST" action="/newevent" enctype="multipart/form-data">
+
+
+                <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Event Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Event Name">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group row"> <!-- Date input -->
+                    <label class="control-label col-sm-2 col-form-label" for="start_date">Ending Date</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="start_date" name="start_date" placeholder="MM/DD/YYY" type="text"/>
+                    </div>
+                </div>
+
+                <div class="form-group row"> <!-- Date input -->
+                    <label class="control-label col-sm-2 col-form-label" for="end_date">Starting Date</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="end_date" name="end_date" placeholder="MM/DD/YYY" type="text"/>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group row">
+                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" name="description" id="description" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-dark float-right">Add Event</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+
+{{end}}

@@ -38,7 +38,7 @@ func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request)  {
 		pst.Writer = r.FormValue("writer")
 		pst.Disc = r.FormValue("description")
 
-		mf,fh,err := r.FormFile("catimg")
+		mf,fh,err := r.FormFile("vid")
 		if err != nil{
 			panic(err)
 		}

@@ -6,7 +6,7 @@ import "github.com/minas528/Online-voting-System/entities"
 type PostService interface {
 	Posts() ([]entities.Post, []error)
 	Post(id int) (*entities.Post, []error)
-	UpdatePost(category *entities.Post) (*entities.Post,[]error)
+	UpdatePost(pst *entities.Post) (*entities.Post,[]error)
 	DeletePost(id int) (*entities.Post,[]error)
-	StorePost(category *entities.Post) (*entities.Post,[]error)
+	StorePost(pst *entities.Post) (*entities.Post,[]error)
 }
