@@ -26,14 +26,15 @@ type Parties struct {
 type Voters struct {
 	Uname    string `gorm:"type:varchar(100);unique;not null"`
 	GID      string `gorm:"type:varchar(255); not null"` //goverment id
+	Email    string `gorm:"type:varchar(100);unique_index"`
 	Password string `gorm:"type:varchar(255); not null"`
 }
 
 type RegParties struct {
-	logo      string `gorm:"type:varchar(255)"`
-	motto     string `gorm:"type:varchar(255); not null"`
-	partyName string `gorm:"type:varchar(255); not null"`
-	counter   int    `gorm:"default:0"`
+	Logo      string `gorm:"type:varchar(255)"`
+	Motto     string `gorm:"type:varchar(255); not null"`
+	PartyName string `gorm:"type:varchar(255); not null"`
+	Counter   int    `gorm:"default:0"`
 }
 
 type RegVoters struct {

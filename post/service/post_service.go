@@ -1,11 +1,10 @@
 package service
 
 import (
-	"github.com/minas528/Online-voting-System/entities"
-	"github.com/minas528/Online-voting-System/post"
 	"log"
 
-
+	"../../../../../github.com/minas528/Online-voting-System/entities"
+	"../../../../../github.com/minas528/Online-voting-System/post"
 )
 
 type PostServiceImple struct {
