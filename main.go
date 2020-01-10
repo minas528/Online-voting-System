@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
-
 	"html/template"
 	"net/http"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 
 	eventRepo "github.com/minas528/Online-voting-System/Event/repository"
 	eventServ "github.com/minas528/Online-voting-System/Event/service"
@@ -17,7 +17,11 @@ import (
 var temp = template.Must(template.ParseGlob("ui/templates/*"))
 
 func login(w http.ResponseWriter, r *http.Request) {
+<<<<<<< HEAD
 	temp.ExecuteTemplate(w, "login", nil)
+=======
+	temp.ExecuteTemplate(w, "admin.voters", nil)
+>>>>>>> aa1189b6461a32fdafb119ec0aa96fb2336f55e2
 }
 func signup(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "signup", nil)
@@ -35,17 +39,28 @@ func RoutesForAdmin() {
 }
 func main() {
 
+<<<<<<< HEAD
 	dbconn, err := gorm.Open("postgres", "postgres://postgres:minpass@localhost:9090/votes?sslmode=disable")
+=======
+	dbconn, err := gorm.Open("postgres", "postgres://postgres:berekettussa@localhost:8080/votes?sslmode=disable")
+>>>>>>> aa1189b6461a32fdafb119ec0aa96fb2336f55e2
 	if err != nil {
 		panic(err)
 	}
 
 	defer dbconn.Close()
 
+<<<<<<< HEAD
 	//errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
 	//if 0 < len(errs) {
 	//	panic(errs)
 	//}
+=======
+	/*errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
+	if 0 < len(errs) {
+		panic(errs)
+	}*/
+>>>>>>> aa1189b6461a32fdafb119ec0aa96fb2336f55e2
 
 	postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)
@@ -65,7 +80,11 @@ func main() {
 	http.HandleFunc("/events", eventHandle.Events)
 	http.HandleFunc("/newevent", eventHandle.EventNew)
 
+<<<<<<< HEAD
 	http.HandleFunc("/login", login)
+=======
+	http.HandleFunc("/voters", login)
+>>>>>>> aa1189b6461a32fdafb119ec0aa96fb2336f55e2
 	http.HandleFunc("/signup", signup)
 	http.ListenAndServe(":8181", nil)
 }
