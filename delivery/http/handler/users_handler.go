@@ -35,20 +35,9 @@ func (uh *UsersHandler) Users(w http.ResponseWriter, r *http.Request) {
 func (uh *UsersHandler) UserNew(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		usr := entities.User{}
-		usr.Name = r.FormValue("name")
-		usr.Writer = r.FormValue("writer")
-		usr.Disc = r.FormValue("description")
-
-		mf, fh, err := r.FormFile("vid")
-		if err != nil {
-			panic(err)
-		}
-		defer mf.Close()
-
-		usr.Vid = fh.Filename
-
-		CreateFile(&mf, fh.Filename)
-		log.Print(usr)
+		usr.Name = r.FormValue("username")
+		usr.Writer = r.FormValue("DID")
+		usr.Disc = r.FormValue("region")
 
 		_, errs := uh.usrServ.StoreUser(&usr)
 		if errs != nil {
@@ -56,8 +45,6 @@ func (uh *UsersHandler) UserNew(w http.ResponseWriter, r *http.Request) {
 		}
 
 		http.Redirect(w, r, "/signup", http.StatusSeeOther)
-	} else {
-		ph.tmpl.ExecuteTemplate(w, "upload.post", nil)
 	}
 }
 
