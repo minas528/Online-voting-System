@@ -18,21 +18,13 @@ var temp = template.Must(template.ParseGlob("ui/templates/*"))
 func login(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "admin.voters", nil)
 }
-<<<<<<< HEAD
+
 func signup(w http.ResponseWriter, r *http.Request)  {
 	temp.ExecuteTemplate(w,"home.l.layout",nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request)  {
 	temp.ExecuteTemplate(w,"index.html",nil)
-=======
-func signup(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "signup", nil)
-}
-
-func index(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "", nil)
->>>>>>> aa1189b6461a32fdafb119ec0aa96fb2336f55e2
 }
 func newEvnet(w http.ResponseWriter, req *http.Request) {
 	temp.ExecuteTemplate(w, "new.event", nil)

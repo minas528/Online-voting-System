@@ -2,6 +2,7 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 
 	eventRepo "../../../github.com/minas528/Online-voting-System/Event/repository"
@@ -13,20 +14,21 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
-var temp = template.Must(template.ParseGlob("ui/templates/*"))
+var temp2 = template.Must(template.ParseGlob("ui/templates/*"))
 
 func login(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "admin.voters", nil)
+	temp2.ExecuteTemplate(w, "admin.voters", nil)
 }
 func signup(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "signup", nil)
+	log.Println("here")
+	temp2.ExecuteTemplate(w, "signup", nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "", nil)
+	temp2.ExecuteTemplate(w, "", nil)
 }
 func newEvnet(w http.ResponseWriter, req *http.Request) {
-	temp.ExecuteTemplate(w, "new.event", nil)
+	temp2.ExecuteTemplate(w, "new.event", nil)
 }
 
 func RoutesForAdmin() {
@@ -48,11 +50,11 @@ func main() {
 
 	postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)
-	postHandler := handler.NewPostHandler(temp, postserv)
+	postHandler := handler.NewPostHandler(temp2, postserv)
 
 	eventRep := eventRepo.NewEventRepository(dbconn)
 	eventserv := eventServ.NewEventService(eventRep)
-	eventHandle := handler.NewEventHandler(temp, eventserv)
+	eventHandle := handler.NewEventHandler(temp2, eventserv)
 
 	fs := http.FileServer(http.Dir("ui/assets/"))
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))

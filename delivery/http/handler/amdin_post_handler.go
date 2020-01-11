@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"../../../../../../github.com/minas528/Online-voting-System/entities"
-	"../../../../../../github.com/minas528/Online-voting-System/post"
+	"github.com/minas528/Online-voting-System/entities"
+	"github.com/minas528/Online-voting-System/post"
 )
 
 type AdminPostsHandler struct {
