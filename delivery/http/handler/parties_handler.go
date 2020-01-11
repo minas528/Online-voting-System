@@ -1,8 +1,6 @@
 package handler
 
 import (
-	"github.com/minas528/Online-voting-System/entities"
-	"github.com/minas528/Online-voting-System/parties"
 	"html/template"
 	"io"
 	"log"
@@ -10,6 +8,13 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+<<<<<<< HEAD
+=======
+	"strconv"
+
+	"../../../../../../github.com/minas528/Online-voting-System/entities"
+	"../../../../../../github.com/minas528/Online-voting-System/parties"
+>>>>>>> 16e7adbc68177c043a8fc6c3f98223984f6335a7
 )
 
 type AdminPartiesHandler struct {

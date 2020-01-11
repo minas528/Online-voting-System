@@ -31,7 +31,11 @@ func (ph *PostsHandler) Posts(w http.ResponseWriter, r *http.Request) {
 
 }
 
+<<<<<<< HEAD
 /*func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
+=======
+func (ph *PostsHandler) choseParty(w http.ResponseWriter, r *http.Request) {
+>>>>>>> 16e7adbc68177c043a8fc6c3f98223984f6335a7
 	if r.Method == http.MethodPost {
 		pst := entities.Post{}
 		pst.Name = r.FormValue("name")
