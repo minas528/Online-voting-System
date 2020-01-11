@@ -1,7 +1,7 @@
 package Event
 
 import (
-	"github.com/minas528/Online-voting-System/entities"
+	"../../../../github.com/minas528/Online-voting-System/entities"
 )
 
 type EventRepostory interface {
@@ -11,4 +11,3 @@ type EventRepostory interface {
 	DeleteEvent(id uint) (*entities.Events, []error)
 	StoreEvent(category *entities.Events) (*entities.Events, []error)
 }
-

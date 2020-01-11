@@ -1,8 +1,6 @@
 package handler
 
 import (
-	"github.com/minas528/Online-voting-System/entities"
-	"github.com/minas528/Online-voting-System/post"
 	"html/template"
 	"io"
 	"log"
@@ -11,6 +9,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"../../../../../../github.com/minas528/Online-voting-System/entities"
+	"../../../../../../github.com/minas528/Online-voting-System/post"
 )
 
 type PostsHandler struct {
@@ -39,9 +39,8 @@ func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 		pst.Writer = r.FormValue("writer")
 		pst.Disc = r.FormValue("description")
 
-
-		mf,fh,err := r.FormFile("vid")
-		if err != nil{
+		mf, fh, err := r.FormFile("vid")
+		if err != nil {
 			panic(err)
 		}
 		defer mf.Close()
