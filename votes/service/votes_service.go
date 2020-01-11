@@ -9,11 +9,21 @@ type VoteServiceImple struct {
 	voteRepo votes.VoteRepository
 }
 
-func (vs *VoteServiceImple) CheckVoter(userName string) bool {
+func NewVoteService(voterepo votes.VoteRepository) *VoteServiceImple {
+	return &VoteServiceImple{voteRepo: voterepo}
+}
 
-	check := vs.voteRepo.CheckVoter(userName)
+func (vs *VoteServiceImple) CheckVoter(voteID int) bool {
+
+	voter, _ := vs.voteRepo.CheckVoter(voteID)
+	/*if check{
+		vs.IncrementCounter
+	}*/
 	//if check is true, run increment counter on this page, if false, display voter
-	return check
+	if voter.Flag == 0 { //if voter hasnt voted, return false
+		return false
+	}
+	return true
 
 }
 
@@ -22,7 +32,6 @@ func (vs *VoteServiceImple) IncrementCounter(prtyName string) (*entities.RegPart
 	vte, errs := vs.voteRepo.GetCounter(prtyName)
 	vte.Counter++
 
-	vs.CheckVoter("")
 	//vte.counter++
 	vs.voteRepo.IncrementCounter(vte)
 
@@ -32,9 +41,9 @@ func (vs *VoteServiceImple) IncrementCounter(prtyName string) (*entities.RegPart
 	return vte, nil
 }
 
-func (vs *VoteServiceImple) Canidates() ([]entities.RegParties, []error) {
+func (vs *VoteServiceImple) Parties() ([]entities.RegParties, []error) {
 
-	canid, errs := vs.voteRepo.Canidates()
+	canid, errs := vs.voteRepo.Parties()
 
 	if len(errs) > 0 {
 
