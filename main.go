@@ -63,7 +63,7 @@ func main() {
 
 	fs := http.FileServer(http.Dir("ui/assets/"))
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
-	http.HandleFunc("/upost", postHandler.PostNew)
+	//http.HandleFunc("/upost", postHandler.PostNew)
 	http.HandleFunc("/posts", postHandler.Posts)
 
 	http.HandleFunc("/parties", partyHandler.PartiesNew)

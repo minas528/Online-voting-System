@@ -9,7 +9,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/minas528/Online-voting-System/entities"
 	"github.com/minas528/Online-voting-System/post"
 )
 
@@ -32,7 +31,7 @@ func (ph *PostsHandler) Posts(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
+/*func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		pst := entities.Post{}
 		pst.Name = r.FormValue("name")
@@ -47,7 +46,7 @@ func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 
 		pst.Vid = fh.Filename
 
-		CreateFile(&mf, fh.Filename)
+		CreateFiles(&mf, fh.Filename)
 		log.Print(pst)
 
 		_, errs := ph.pstServ.StorePost(&pst)
@@ -60,8 +59,8 @@ func (ph *PostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 		ph.tmpl.ExecuteTemplate(w, "upload.post", nil)
 	}
 }
-
-func CreateFile(mf *multipart.File, fname string) {
+*/
+func CreateFiles(mf *multipart.File, fname string) {
 	wd, err := os.Getwd()
 
 	if err != nil {
