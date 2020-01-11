@@ -47,3 +47,12 @@ type RegVoters struct {
 	Event      Events `gorm:"foreignkey:EventRefer"`
 	EventRefer int
 }
+
+type User struct{
+	Username string `gorm:"type:varchar(255);unique;not null"`
+	ID int
+	Region string `gorm:"type:varchar(255)"`
+	DID string `gorm:"type:varchar(255)"`
+	Age int
+	Password string
+}
