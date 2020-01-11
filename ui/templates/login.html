@@ -23,18 +23,18 @@ Log In
 </span>
             <div class="wrap-input100 validate-input m-b-20" data-validate="Enter username">
                 <input class="input100" type="text" name="username" placeholder="Username">
-                <span class="focus-input100"></span>
+                <span class="focus-input100"></span>{{ .Username }}
             </div>
             <div class="wrap-input100 validate-input m-b-25" data-validate="Enter password">
                 <input class="input100" type="password" name="password" placeholder="Password">
-                <span class="focus-input100"></span>
+                <span class="focus-input100"></span>{{ .Password}}
+            </div>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
                         Log in
                     </button>
                 </div>
-            </div>
-        </form>
+            </form>
     </div>
 </div>
 </body>
