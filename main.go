@@ -27,7 +27,9 @@ func index(w http.ResponseWriter, r *http.Request)  {
 func newEvnet(w http.ResponseWriter,req *http.Request)  {
 	temp.ExecuteTemplate(w,"new.event",nil)
 }
-
+func parties(w http.ResponseWriter, r *http.Request){
+	temp.ExecuteTemplate(w, "parties",nil)
+}
 func RoutesForAdmin()  {
 
 }
