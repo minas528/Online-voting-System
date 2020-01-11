@@ -41,3 +41,12 @@ type RegVoters struct {
 	Uname string `gorm:"type:varchar(100);unique"`
 	flag  bool   `gorm:"default:0"` //did they vote?
 }
+
+type User struct{
+	Username string `gorm:"type:varchar(255);unique;not null"`
+	ID int
+	Region string `gorm:"type:varchar(255)"`
+	DID string `gorm:"type:varchar(255)"`
+	Age int
+	Password string
+}
