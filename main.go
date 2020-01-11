@@ -29,8 +29,15 @@ func index(w http.ResponseWriter, r *http.Request) {
 func newEvnet(w http.ResponseWriter, req *http.Request) {
 	temp.ExecuteTemplate(w, "new.event", nil)
 }
+<<<<<<< HEAD
+func parties(w http.ResponseWriter, r *http.Request){
+	temp.ExecuteTemplate(w, "parties",nil)
+}
+func RoutesForAdmin()  {
+=======
 
 func RoutesForAdmin() {
+>>>>>>> aa1189b6461a32fdafb119ec0aa96fb2336f55e2
 
 }
 func main() {
@@ -42,10 +49,21 @@ func main() {
 
 	defer dbconn.Close()
 
+<<<<<<< HEAD
 	//errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
 	//if 0 < len(errs) {
 	//	panic(errs)
 	//}
+=======
+	/*errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
+	if 0 < len(errs) {
+		panic(errs)
+	}*/
+	// errs := dbconn.CreateTable(&entities.RegParties{}, &entities.RegVoters{}).GetErrors()
+	// if 0 < len(errs) {
+	//	panic(errs)
+	// }
+>>>>>>> 2bc9a017d1f15b2af48c0a8c30a8390b93e967e3
 
 	postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)

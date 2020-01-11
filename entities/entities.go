@@ -17,6 +17,7 @@ type Post struct {
 }
 
 type Parties struct {
+	ID     int
 	Name   string `gorm:"type:varchar(255);unique;not null"`
 	Logo   string `gorm:"type:varchar(255)"`
 	Slogan string `gorm:"type:varchar(255); not null"`
@@ -31,15 +32,20 @@ type Voters struct {
 }
 
 type RegParties struct {
-	Logo      string `gorm:"type:varchar(255)"`
-	Motto     string `gorm:"type:varchar(255); not null"`
-	PartyName string `gorm:"type:varchar(255); not null"`
-	Counter   int    `gorm:"default:0"`
+	Logo       string `gorm:"type:varchar(255)"`
+	Motto      string `gorm:"type:varchar(255); not null"`
+	PartyName  string `gorm:"type:varchar(255); not null"`
+	Counter    int    `gorm:"default:0"`
+	Event      Events `gorm:"foreignkey:EventRefer"`
+	EventRefer int
 }
 
 type RegVoters struct {
-	Uname string `gorm:"type:varchar(100);unique"`
-	flag  bool   `gorm:"default:0"` //did they vote?
+	Uname      string `gorm:"type:varchar(100);unique"`
+	Flag       int    `gorm:"default:0"` //did they vote?
+	VotingID   string `gorm:"type:varchar(255);unique"`
+	Event      Events `gorm:"foreignkey:EventRefer"`
+	EventRefer int
 }
 
 type User struct{
