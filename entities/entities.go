@@ -17,6 +17,7 @@ type Post struct {
 }
 
 type Parties struct {
+	ID int
 	Name   string `gorm:"type:varchar(255);unique;not null"`
 	Logo   string `gorm:"type:varchar(255)"`
 	Slogan string `gorm:"type:varchar(255); not null"`

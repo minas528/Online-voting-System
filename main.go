@@ -29,8 +29,15 @@ func index(w http.ResponseWriter, r *http.Request)  {
 func newEvnet(w http.ResponseWriter, req *http.Request) {
 	temp.ExecuteTemplate(w, "new.event", nil)
 }
+<<<<<<< HEAD
+func parties(w http.ResponseWriter, r *http.Request){
+	temp.ExecuteTemplate(w, "parties",nil)
+}
+func RoutesForAdmin()  {
+=======
 
 func RoutesForAdmin() {
+>>>>>>> aa1189b6461a32fdafb119ec0aa96fb2336f55e2
 
 }
 func main() {
