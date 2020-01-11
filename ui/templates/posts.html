@@ -6,7 +6,17 @@
 
 {{define "posts.content" }}
 <section  class="mbr-section mbr-section-nopadding" id="msg-box5-0" data-rv-view="15" style="background-color: rgb(255, 255, 255); padding-top: 0rem; padding-bottom: 0rem;padding-left: 20%;padding-right: 20%">
+    {{ if not .}}
 
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5">ምንም ልጥፎች የሉም</h1>
+            <p class="lead"></p>
+
+        </div>
+    </main>
+
+    {{else}}
     {{ range  . }}
 
     <div class="container card border-dark shadow-sm" style="margin-bottom: 10px" >
@@ -26,6 +36,7 @@
         </div>
     </div>
     {{ end }}
+    {{end}}
 
 </section>
 

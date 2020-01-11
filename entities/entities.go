@@ -29,3 +29,4 @@ type Vote struct {
 	GID     int  //generated id
 	PartyID int
 }
+

@@ -19,11 +19,11 @@ func login(w http.ResponseWriter, r *http.Request)  {
 	temp.ExecuteTemplate(w,"admin.voters",nil)
 }
 func signup(w http.ResponseWriter, r *http.Request)  {
-	temp.ExecuteTemplate(w,"signup",nil)
+	temp.ExecuteTemplate(w,"home.l.layout",nil)
 }
 
 func index(w http.ResponseWriter, r *http.Request)  {
-	temp.ExecuteTemplate(w,"",nil)
+	temp.ExecuteTemplate(w,"index.html",nil)
 }
 func newEvnet(w http.ResponseWriter,req *http.Request)  {
 	temp.ExecuteTemplate(w,"new.event",nil)
