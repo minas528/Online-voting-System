@@ -6,4 +6,5 @@ type VoteRepository interface {
 	CheckVoter(userName string) (check bool)
 	IncrementCounter(vte *entities.RegParties) (*entities.RegParties, []error)
 	GetCounter(prtyName string) (*entities.RegParties, []error)
+	Canidates() ([]entities.RegParties, []error)
 }

@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"log"
+
 	"../../../../../github.com/minas528/Online-voting-System/entities"
 	"github.com/jinzhu/gorm"
 )
@@ -43,4 +45,15 @@ func (vRepo *VoteGormRepo) IncrementCounter(vote *entities.RegParties) (*entitie
 		return nil, errs
 	}
 	return vte, errs
+}
+
+func (vRepo *VoteGormRepo) Canidates() ([]entities.RegParties, []error) {
+	canids := []entities.RegParties{}
+	errs := vRepo.conn.Find(&canids).GetErrors()
+
+	if len(errs) > 0 {
+		log.Println("faliled from gorm_vote")
+		return nil, errs
+	}
+	return canids, errs
 }

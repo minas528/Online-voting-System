@@ -52,6 +52,10 @@ func main() {
 	if 0 < len(errs) {
 		panic(errs)
 	}*/
+	// errs := dbconn.CreateTable(&entities.RegParties{}, &entities.RegVoters{}).GetErrors()
+	// if 0 < len(errs) {
+	//	panic(errs)
+	// }
 
 	postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)

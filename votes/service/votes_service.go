@@ -31,3 +31,14 @@ func (vs *VoteServiceImple) IncrementCounter(prtyName string) (*entities.RegPart
 	}
 	return vte, nil
 }
+
+func (vs *VoteServiceImple) Canidates() ([]entities.RegParties, []error) {
+
+	canid, errs := vs.voteRepo.Canidates()
+
+	if len(errs) > 0 {
+
+		return nil, errs
+	}
+	return canid, errs
+}
