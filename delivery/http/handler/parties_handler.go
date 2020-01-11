@@ -72,11 +72,11 @@ func (ph *AdminPartiesHandler) AdminPartiesUpdate(w http.ResponseWriter, r *http
 		if len(errs) > 0 {
 			panic(errs)
 		}
-		ph.tmpl.ExecuteTemplate(w, "parties.new.html", pst)
+		ph.tmpl.ExecuteTemplate(w, "admin.parties.update.html", pst)
 	} else if r.Method == http.MethodPost {
 		pst := entities.Parties{}
 		pst.ID, _ = strconv.Atoi(r.FormValue("id"))
-		pst.Name = r.FormValue("name")
+		pst.Name = r.FormValue("catname")
 		pst.Slogan = r.FormValue("writer")
 		//pst.scope = r.FormValue("description")
 		pst.Logo = r.FormValue("vid")
@@ -93,9 +93,9 @@ func (ph *AdminPartiesHandler) AdminPartiesUpdate(w http.ResponseWriter, r *http
 		if len(errs) > 0 {
 			panic(errs)
 		}
-		http.Redirect(w, r, "/admin/posts", http.StatusSeeOther)
+		http.Redirect(w, r, "/admin/parties", http.StatusSeeOther)
 	} else {
-		http.Redirect(w, r, "/admin/posts", http.StatusSeeOther)
+		http.Redirect(w, r, "/admin/parties", http.StatusSeeOther)
 	}
 }
 
@@ -112,7 +112,7 @@ func (ph *AdminPartiesHandler) AdminPartiesDelete(w http.ResponseWriter, r *http
 		}
 
 	}
-	http.Redirect(w, r, "admin/posts", http.StatusSeeOther)
+	http.Redirect(w, r, "admin/parties", http.StatusSeeOther)
 }
 
 func writeFiles(mf *multipart.File, fname string) {

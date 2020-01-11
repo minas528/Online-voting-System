@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"../../../../../github.com/minas528/Online-voting-System/entities"
 	"github.com/jinzhu/gorm"
+	"github.com/minas528/Online-voting-System/entities"
 )
 
 type EventRepositoryImple struct {

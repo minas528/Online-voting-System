@@ -1,6 +1,8 @@
 package parties
 
-import "github.com/minas528/Online-voting-System/entities"
+import (
+	"github.com/minas528/Online-voting-System/entities"
+)
 
 // PostRepository specifies post related database operations
 type PartiesRepository interface {
@@ -11,3 +13,8 @@ type PartiesRepository interface {
 	StoreParties(Parties *entities.Parties) (*entities.Parties, []error)
 }
 
+type SessionRepository interface {
+	Session(sessionID string) (*entities.Session, []error)
+	StoreSession(session *entities.Session) (*entities.Session, []error)
+	DeleteSession(sessionID string) (*entities.Session, []error)
+}

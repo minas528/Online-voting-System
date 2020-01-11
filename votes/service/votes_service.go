@@ -1,8 +1,8 @@
 package service
 
 import (
-	"../../../../../github.com/minas528/Online-voting-System/entities"
-	"../../../../../github.com/minas528/Online-voting-System/votes"
+	"github.com/minas528/Online-voting-System/entities"
+	"github.com/minas528/Online-voting-System/votes"
 )
 
 type VoteServiceImple struct {

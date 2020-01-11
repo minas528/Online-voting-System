@@ -17,11 +17,17 @@ type Post struct {
 }
 
 type Parties struct {
-	ID int
+	ID     int
 	Name   string `gorm:"type:varchar(255);unique;not null"`
 	Logo   string `gorm:"type:varchar(255)"`
 	Slogan string `gorm:"type:varchar(255); not null"`
 	Scope  string `gorm:"type:varchar(255); not null"`
+}
+type Session struct {
+	ID         uint
+	UUID       string `gorm:"type:varchar(255);not null"`
+	Expires    int64  `gorm:"type:varchar(255);not null"`
+	SigningKey []byte `gorm:"type:varchar(255);not null"`
 }
 
 type Voters struct {
