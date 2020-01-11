@@ -75,8 +75,6 @@ func main() {
 
 	http.HandleFunc("/vote", voteHandler.Vote) //
 	http.HandleFunc("/choseParty", voteHandler.Chose)
-	//http.HandleFunc("/choseParty", voteHandler.choseParty)
-	//http.HandleFunc("/choseParty", voteHandler.choseParty) //
 
 	http.HandleFunc("/voters", login)
 	http.HandleFunc("/signup", signup)

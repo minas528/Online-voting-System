@@ -31,10 +31,6 @@ func (vh *VotesHandler) Chose(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
 		vte := entities.RegParties{}
 		vte.PartyName = r.FormValue("partyname")
-		//pst.Writer = r.FormValue("writer")
-		//pst.Disc = r.FormValue("description")
-
-		//mf, fh, err := r.FormFile("vid")
 
 		_, errs := vh.vteServ.IncrementCounter(vte.PartyName)
 
