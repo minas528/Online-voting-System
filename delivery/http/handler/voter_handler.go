@@ -39,7 +39,18 @@ func NewVoterHandler(T *template.Template, AS voters.VotersService,
 		voterRole:role,voterSess:vtrsess,csrfSignKey:csKye}
 }
 
-
+func (uh *VoterHandler) Authenticated(next http.Handler) http.Handler {
+	fn := func(w http.ResponseWriter, r *http.Request) {
+		ok := uh.loggedIn(r)
+		if !ok {
+			http.Redirect(w, r, "/login", http.StatusSeeOther)
+			return
+		}
+		ctx := context.WithValue(r.Context(), ctxVoterSessionKey, uh.voterSess)
+		next.ServeHTTP(w, r.WithContext(ctx))
+	}
+	return http.HandlerFunc(fn)
+}
 
 
 func (uh *VoterHandler) Authorized(next http.Handler) http.Handler {
