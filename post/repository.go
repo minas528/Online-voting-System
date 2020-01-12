@@ -1,6 +1,6 @@
 package post
 
-import "../../../../github.com/minas528/Online-voting-System/entities"
+import "github.com/minas528/Online-voting-System/entities"
 
 // PostRepository specifies post related database operations
 type PostRepository interface {

@@ -1,6 +1,6 @@
 package Event
 
-import "../../../../github.com/minas528/Online-voting-System/entities"
+import "github.com/minas528/Online-voting-System/entities"
 
 type EventService interface {
 	Events() ([]entities.Events, []error)

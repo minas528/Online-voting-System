@@ -2,6 +2,7 @@ package votes
 
 import "github.com/minas528/Online-voting-System/entities"
 
+<<<<<<< HEAD
 type VotersRepository interface {
 	Voters() ([]entities.Voters, []error)
 	Voter(id uint) (*entities.Voters, []error)
@@ -29,4 +30,11 @@ type SessionRepository interface {
 	Session(sessionID string) (*entities.Session, []error)
 	StoreSession(session *entities.Session) (*entities.Session, []error)
 	DeleteSession(sessionID string) (*entities.Session, []error)
+=======
+type VoteRepository interface {
+	CheckVoter(voteID int) (*entities.RegVoters, []error)
+	IncrementCounter(vte *entities.RegParties) (*entities.RegParties, []error)
+	GetCounter(prtyName string) (*entities.RegParties, []error)
+	Parties() ([]entities.RegParties, []error)
+>>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
 }

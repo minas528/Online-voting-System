@@ -23,6 +23,12 @@ type Parties struct {
 	Slogan string `gorm:"type:varchar(255); not null"`
 	Scope  string `gorm:"type:varchar(255); not null"`
 }
+type Session struct {
+	ID         uint
+	UUID       string `gorm:"type:varchar(255);not null"`
+	Expires    int64  `gorm:"type:varchar(255);not null"`
+	SigningKey []byte `gorm:"type:varchar(255);not null"`
+}
 
 type Voters struct {
 	Uname    string `gorm:"type:varchar(100);unique;not null"`

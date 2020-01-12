@@ -7,8 +7,8 @@ import (
 	eventRepo "../../../github.com/minas528/Online-voting-System/Event/repository"
 	eventServ "../../../github.com/minas528/Online-voting-System/Event/service"
 	"../../../github.com/minas528/Online-voting-System/delivery/http/handler"
-	postRepo "../../../github.com/minas528/Online-voting-System/post/repository"
-	postServ "../../../github.com/minas528/Online-voting-System/post/service"
+	voteRepo "../../../github.com/minas528/Online-voting-System/votes/repository"
+	voteServ "../../../github.com/minas528/Online-voting-System/votes/service"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
@@ -51,9 +51,13 @@ func main() {
 	//	panic(errs)
 	// }
 
-	postRepo := postRepo.NewPostGormRepo(dbconn)
+	/*postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)
-	postHandler := handler.NewPostHandler(temp, postserv)
+	postHandler := handler.NewPostHandler(temp, postserv)*/
+
+	voteRepo := voteRepo.NewVoteGormRepo(dbconn)
+	voteserv := voteServ.NewVoteService(voteRepo)
+	voteHandler := handler.NewVotesHandler(temp, voteserv)
 
 	eventRep := eventRepo.NewEventRepository(dbconn)
 	eventserv := eventServ.NewEventService(eventRep)
@@ -61,13 +65,16 @@ func main() {
 
 	fs := http.FileServer(http.Dir("ui/assets/"))
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
-	http.HandleFunc("/upost", postHandler.PostNew)
-	http.HandleFunc("/posts", postHandler.Posts)
+	//http.HandleFunc("/upost", postHandler.PostNew)
+	//http.HandleFunc("/posts", postHandler.Posts)
 	http.HandleFunc("/", index)
 	//http.HandleFunc("/newevent",newEvnet)
 
 	http.HandleFunc("/events", eventHandle.Events)
 	http.HandleFunc("/newevent", eventHandle.EventNew)
+
+	http.HandleFunc("/vote", voteHandler.Vote) //
+	http.HandleFunc("/choseParty", voteHandler.Chose)
 
 	http.HandleFunc("/voters", login)
 	http.HandleFunc("/signup", signup)

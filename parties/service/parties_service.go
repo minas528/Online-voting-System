@@ -1,4 +1,3 @@
-
 package service
 
 import (
@@ -11,10 +10,10 @@ type PartiesServiceImple struct {
 	PartiesRepo parties.PartiesRepository
 }
 
-func NewPostService(postrepo parties.PartiesRepository) *PartiesServiceImple {
-	return &PartiesServiceImple{PartiesRepo: postrepo}
+func NewPartiesService(partiesrepo parties.PartiesRepository) *PartiesServiceImple {
+	return &PartiesServiceImple{PartiesRepo: partiesrepo}
 }
-func (ps *PartiesServiceImple) Posts() ([]entities.Parties, []error) {
+func (ps *PartiesServiceImple) Parties() ([]entities.Parties, []error) {
 	Parties, errs := ps.PartiesRepo.Parties()
 	if len(errs) > 0 {
 		log.Println("serv err")
