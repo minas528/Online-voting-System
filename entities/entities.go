@@ -17,12 +17,13 @@ type Post struct {
 }
 
 type Parties struct {
-	ID int
+	ID     int
 	Name   string `gorm:"type:varchar(255);unique;not null"`
 	Logo   string `gorm:"type:varchar(255)"`
 	Slogan string `gorm:"type:varchar(255); not null"`
 	Scope  string `gorm:"type:varchar(255); not null"`
 }
+
 
 type Voters struct {
 	ID       uint
@@ -53,10 +54,10 @@ type RegParties struct {
 	PartyName string `gorm:"type:varchar(255); not null"`
 	Counter   int    `gorm:"default:0"`
 	Event Events `gorm:"foreignkey:EventRefer"`
-	EventRefer int
 }
 
 type RegVoters struct {
+
 	ID int
 	Uname string `gorm:"type:varchar(100);unique"`
 	flag  bool   `gorm:"default:0"` //did they vote?
@@ -72,3 +73,11 @@ type Session struct {
 	SigningKey []byte `gorm:"type:varchar(255);not null"`
 }
 
+type User struct{
+	Username string `gorm:"type:varchar(255);unique;not null"`
+	ID int
+	Region string `gorm:"type:varchar(255)"`
+	DID string `gorm:"type:varchar(255)"`
+	Age int
+	Password string
+}

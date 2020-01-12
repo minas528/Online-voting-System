@@ -1,46 +1,136 @@
 package repository
 
 import (
-	"../../../../../github.com/minas528/Online-voting-System/entities"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 	"github.com/jinzhu/gorm"
+	"github.com/minas528/Online-voting-System/entities"
+	"log"
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 8ba8eb050e4b504cae99e995a2fe7e64222d1378
+	"log"
+
+	"../../../../../github.com/minas528/Online-voting-System/entities"
+
+	"github.com/jinzhu/gorm"
+<<<<<<< HEAD
+=======
+	"github.com/minas528/Online-voting-System/entities"
+>>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
+>>>>>>> 8ba8eb050e4b504cae99e995a2fe7e64222d1378
 )
 
-type VoteGormRepo struct {
+type VoterGormRepo struct {
 	conn *gorm.DB
 }
 
-func NewVoteGormRepo(db *gorm.DB) *VoteGormRepo {
-	return &VoteGormRepo{conn: db}
+func NewVoterGormRepo(conn *gorm.DB) *VoterGormRepo  {
+	return &VoterGormRepo{conn:conn}
 }
 
-func (vRepo *VoteGormRepo) CheckVoter(userName string) bool {
+<<<<<<< HEAD
+func (ari *VoterGormRepo)Voters() ([]entities.Voters, []error){
+	voters := []entities.Voters{}
+	errs := ari.conn.Find(&voters).GetErrors()
+	if len(errs)> 0{
+		return nil,errs
+	}
+	return voters,errs
+	
+}
+func (ari *VoterGormRepo)Voter(id uint) (*entities.Voters, []error){
+	voter := entities.Voters{}
+	errs := ari.conn.First(&voter).GetErrors()
+	if len(errs) >0{
+		return nil,errs
+	}
+	return &voter,errs
+	
+=======
+func (vRepo *VoteGormRepo) CheckVoter(voteID int) (*entities.RegVoters, []error) {
 
-	vte := entities.RegParties{}
-	errs := vRepo.conn.First(&vte, userName).RecordNotFound()
+	vte := entities.RegVoters{}
+	errs := vRepo.conn.First(&vte, voteID).GetErrors()
 
-	if errs == true { //if record not found, return false
+	/*	if errs == true { //if record not found, return false
+		return false
+	}*/
+	if len(errs) > 0 {
+		log.Println("faliled fetching this voter")
+		return nil, errs
+	}
+
+	return &vte, errs
+
+>>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
+}
+
+func (ari *VoterGormRepo) VoterByGID(gid string) (*entities.Voters,[]error){
+	voter := entities.Voters{}
+	errs := ari.conn.Find(&voter,"g_id=?",gid).GetErrors()
+	if len(errs) >0 {
+		return nil,errs
+	}
+	return &voter,errs
+}
+func (ari *VoterGormRepo)UpdateVoter(voter *entities.Voters) (*entities.Voters, []error){
+	vote := voter
+	errs := ari.conn.Save(vote).GetErrors()
+
+	if len(errs) > 0 {
+		return nil, errs
+	}
+	return vote, errs	
+}
+func (ari *VoterGormRepo)Deletevoter(id uint) (*entities.Voters, []error){
+	voter ,errs := ari.Voter(id)
+	if len(errs)>0{
+		return nil,errs
+	}
+	return voter,errs
+}
+func (ari *VoterGormRepo)StoreVoter(voter *entities.Voters) (*entities.Voters, []error){
+	votee := voter
+
+	errs := ari.conn.Create(votee).GetErrors()
+	if len(errs) > 0 {
+		return nil, errs
+	}
+	log.Println("now here")
+	return votee, errs
+}
+
+<<<<<<< HEAD
+func (ari *VoterGormRepo) PhoneExists(phone string) bool{
+	voter := entities.Voters{}
+	errs := ari.conn.Find(&voter,"phone=?",phone).GetErrors()
+	if len(errs) >0 {
 		return false
 	}
-
 	return true
-
 }
-
-func (vRepo *VoteGormRepo) GetCounter(prtyName string) (*entities.RegParties, []error) {
-	vte := entities.RegParties{}
-	errs := vRepo.conn.First(&vte, prtyName).GetErrors()
-
-	if len(errs) > 0 {
-		return nil, errs
+func (ari *VoterGormRepo)GIDExists(gid string) bool{
+	voter := entities.Voters{}
+	errs := ari.conn.Find(&voter,"g_id=?",gid).GetErrors()
+	if len(errs) >0 {
+		return false
 	}
-	return &vte, errs
+	return true
 }
-func (vRepo *VoteGormRepo) IncrementCounter(vote *entities.RegParties) (*entities.RegParties, []error) {
-	vte := vote
-	errs := vRepo.conn.Save(vte).GetErrors()
+func (ari *VoterGormRepo)VoterRoles(voters *entities.Voters) ([]entities.Role,[]error){
+	voterRoles := []entities.Role{}
+	errs := ari.conn.Model(voters).Related(&voterRoles).GetErrors()
+=======
+func (vRepo *VoteGormRepo) Parties() ([]entities.RegParties, []error) {
+	canids := []entities.RegParties{}
+	errs := vRepo.conn.Find(&canids).GetErrors()
+>>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
 
-	if len(errs) > 0 {
-		return nil, errs
+	if len(errs) >0 {
+		return nil,errs
 	}
-	return vte, errs
+	return voterRoles,errs
 }

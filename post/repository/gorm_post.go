@@ -22,12 +22,12 @@ func (pRepo *PostGormRepo) Posts() ([]entities.Post, []error) {
 	log.Println("in side of posts repo")
 
 	if len(errs) > 0 {
-		log.Println("faliled")
+		log.Println("failed")
 		return nil, errs
 	}
 	return posts, errs
 }
-
+ 
 func (pRepo *PostGormRepo) Post(id int) (*entities.Post, []error) {
 	pst := entities.Post{}
 	errs := pRepo.conn.First(&pst, id).GetErrors()

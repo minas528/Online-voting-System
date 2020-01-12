@@ -1,8 +1,6 @@
 package handler
 
 import (
-	"github.com/minas528/Online-voting-System/entities"
-	"github.com/minas528/Online-voting-System/parties"
 	"html/template"
 	"io"
 	"log"
@@ -10,15 +8,17 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-	"strconv"
+
+	"../../../../../../github.com/minas528/Online-voting-System/entities"
+	"../../../../../../github.com/minas528/Online-voting-System/parties"
 )
 
 type AdminPartiesHandler struct {
 	tmpl    *template.Template
-	pstServ parties.PostService
+	pstServ parties.PartiesService
 }
 
-func NewAdminPartiesHandler(T *template.Template, PS parties.PostService) *AdminPartiesHandler {
+func NewAdminPartiesHandler(T *template.Template, PS parties.PartiesService) *AdminPartiesHandler {
 	return &AdminPartiesHandler{tmpl: T, pstServ: PS}
 }
 
@@ -28,7 +28,7 @@ func (ph *AdminPartiesHandler) Parties(w http.ResponseWriter, r *http.Request) {
 		log.Println(errs)
 		panic(errs)
 	}
-	ph.tmpl.ExecuteTemplate(w, "admin.posts", party)
+	ph.tmpl.ExecuteTemplate(w, "parties", party)
 
 }
 
@@ -55,12 +55,13 @@ func (ph *AdminPartiesHandler) PartiesNew(w http.ResponseWriter, r *http.Request
 			panic(errs)
 		}
 
-		http.Redirect(w, r, "/posts", http.StatusSeeOther)
+		http.Redirect(w, r, "/parties", http.StatusSeeOther)
 	} else {
-		ph.tmpl.ExecuteTemplate(w, "upload.post", nil)
+		ph.tmpl.ExecuteTemplate(w, "upload.party", nil)
 	}
 }
 
+/*
 func (ph *AdminPartiesHandler) AdminPartiesUpdate(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
 		idraw := r.URL.Query().Get("id")
@@ -72,11 +73,11 @@ func (ph *AdminPartiesHandler) AdminPartiesUpdate(w http.ResponseWriter, r *http
 		if len(errs) > 0 {
 			panic(errs)
 		}
-		ph.tmpl.ExecuteTemplate(w, "parties.new.html", pst)
+		ph.tmpl.ExecuteTemplate(w, "admin.parties.update.html", pst)
 	} else if r.Method == http.MethodPost {
 		pst := entities.Parties{}
 		pst.ID, _ = strconv.Atoi(r.FormValue("id"))
-		pst.Name = r.FormValue("name")
+		pst.Name = r.FormValue("catname")
 		pst.Slogan = r.FormValue("writer")
 		//pst.scope = r.FormValue("description")
 		pst.Logo = r.FormValue("vid")
@@ -93,9 +94,9 @@ func (ph *AdminPartiesHandler) AdminPartiesUpdate(w http.ResponseWriter, r *http
 		if len(errs) > 0 {
 			panic(errs)
 		}
-		http.Redirect(w, r, "/admin/posts", http.StatusSeeOther)
+		http.Redirect(w, r, "/admin/parties", http.StatusSeeOther)
 	} else {
-		http.Redirect(w, r, "/admin/posts", http.StatusSeeOther)
+		http.Redirect(w, r, "/admin/parties", http.StatusSeeOther)
 	}
 }
 
@@ -112,9 +113,11 @@ func (ph *AdminPartiesHandler) AdminPartiesDelete(w http.ResponseWriter, r *http
 		}
 
 	}
-	http.Redirect(w, r, "admin/posts", http.StatusSeeOther)
+	http.Redirect(w, r, "admin/parties", http.StatusSeeOther)
 }
+*/
 
+/*
 func writeFiles(mf *multipart.File, fname string) {
 
 	wd, err := os.Getwd()
@@ -131,4 +134,23 @@ func writeFiles(mf *multipart.File, fname string) {
 	}
 	defer image.Close()
 	io.Copy(image, *mf)
+}
+*/
+
+func CreateFile(mf *multipart.File, fname string) {
+	wd, err := os.Getwd()
+
+	if err != nil {
+		panic(err)
+	}
+	path := filepath.Join(wd, "ui", "assets", "vid", fname)
+
+	vid, err := os.Create(path)
+
+	if err != nil {
+		panic(err)
+	}
+	defer vid.Close()
+
+	io.Copy(vid, *mf)
 }

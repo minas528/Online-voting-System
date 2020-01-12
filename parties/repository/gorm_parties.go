@@ -1,17 +1,17 @@
 package repository
 
 import (
-"github.com/minas528/Online-voting-System/entities"
-"log"
+	"github.com/minas528/Online-voting-System/entities"
+	"log"
 
-"github.com/jinzhu/gorm"
+	"github.com/jinzhu/gorm"
 )
 
 type PartiesGormRepo struct {
 	conn *gorm.DB
 }
 
-func NewPostGormRepo(db *gorm.DB) *PartiesGormRepo {
+func NewPartiesGormRepo(db *gorm.DB) *PartiesGormRepo {
 	return &PartiesGormRepo{conn: db}
 }
 
