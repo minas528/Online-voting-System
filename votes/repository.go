@@ -1,6 +1,6 @@
 package votes
 
-import "github.com/minas528/Online-voting-System/entities"
+import "../../../../github.com/minas528/Online-voting-System/entities"
 
 type VoteRepository interface {
 	CheckVoter(voteID int) (*entities.RegVoters, []error)

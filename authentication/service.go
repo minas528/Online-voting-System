@@ -1,6 +1,6 @@
 package authentication
 
-import "../github.com/minas528/Online-voting-System/entities"
+import "../../../../github.com/minas528/Online-voting-System/entities"
 
 type UserService interface {
 	Users() ([]entities.User, []error)

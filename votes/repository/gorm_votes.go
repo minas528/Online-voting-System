@@ -1,14 +1,11 @@
 package repository
 
 import (
-<<<<<<< HEAD
-=======
 	"log"
 
 	"../../../../../github.com/minas528/Online-voting-System/entities"
->>>>>>> 16e7adbc68177c043a8fc6c3f98223984f6335a7
+
 	"github.com/jinzhu/gorm"
-	"github.com/minas528/Online-voting-System/entities"
 )
 
 type VoteGormRepo struct {

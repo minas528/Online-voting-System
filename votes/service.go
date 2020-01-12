@@ -1,6 +1,6 @@
 package votes
 
-import "github.com/minas528/Online-voting-System/entities"
+import "../../../../github.com/minas528/Online-voting-System/entities"
 
 type VoteService interface {
 	CheckVoter(voteID int) bool

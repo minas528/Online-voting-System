@@ -8,13 +8,9 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
-<<<<<<< HEAD
-=======
-	"strconv"
 
 	"../../../../../../github.com/minas528/Online-voting-System/entities"
 	"../../../../../../github.com/minas528/Online-voting-System/parties"
->>>>>>> 16e7adbc68177c043a8fc6c3f98223984f6335a7
 )
 
 type AdminPartiesHandler struct {
@@ -64,6 +60,7 @@ func (ph *AdminPartiesHandler) PartiesNew(w http.ResponseWriter, r *http.Request
 		ph.tmpl.ExecuteTemplate(w, "upload.party", nil)
 	}
 }
+
 /*
 func (ph *AdminPartiesHandler) AdminPartiesUpdate(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodGet {
@@ -139,7 +136,6 @@ func writeFiles(mf *multipart.File, fname string) {
 	io.Copy(image, *mf)
 }
 */
-
 
 func CreateFile(mf *multipart.File, fname string) {
 	wd, err := os.Getwd()

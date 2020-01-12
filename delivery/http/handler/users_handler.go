@@ -2,16 +2,11 @@ package handler
 
 import (
 	"html/template"
-	"io"
 	"log"
-	"mime/multipart"
 	"net/http"
-	"os"
-	"path/filepath"
-	
 
 	"../../../../../../github.com/minas528/Online-voting-System/entities"
-	"../../../../../../github.com/minas528/Online-voting-System/authentication"
+	
 )
 
 type UsersHandler struct {
@@ -42,7 +37,7 @@ func (uh *UsersHandler) UserNew(w http.ResponseWriter, r *http.Request) {
 
 		_, errs := uh.usrServ.StoreUser(&usr)
 		if errs != nil {
-			panic(errs)-
+			panic(errs)
 		}
 
 		http.Redirect(w, r, "/signup", http.StatusSeeOther)

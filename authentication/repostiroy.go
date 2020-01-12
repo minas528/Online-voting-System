@@ -1,6 +1,6 @@
 package authentication
 
-import "../github.com/minas528/Online-voting-System/entities"
+import "../../../../github.com/minas528/Online-voting-System/entities"
 
 // UserRepository specifies post related database operations
 type UserRepository interface {

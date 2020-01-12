@@ -25,7 +25,7 @@ func signup(w http.ResponseWriter, r *http.Request) {
 func index(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "", nil)
 }
-func newEvnet(w http.ResponseWriter, req *http.Request) {
+func newEvnet(w http.ResponseWriter, req *http.Request) {              
 	temp.ExecuteTemplate(w, "new.event", nil)
 }
 
