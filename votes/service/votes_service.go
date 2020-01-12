@@ -1,44 +1,75 @@
 package service
 
 import (
-	"../../../../../github.com/minas528/Online-voting-System/entities"
-	"../../../../../github.com/minas528/Online-voting-System/votes"
+	"github.com/minas528/Online-voting-System/voters"
+	"github.com/minas528/Online-voting-System/entities"
+	"log"
 )
 
-type VoteServiceImple struct {
-	voteRepo votes.VoteRepository
+type VoterServiceImple struct {
+	voterRepo voters.VotersRepository
 }
 
-func (vs *VoteServiceImple) CheckVoter(userName string) bool {
 
-	check := vs.voteRepo.CheckVoter(userName)
-	//if check is true, run increment counter on this page, if false, display voter
-	return check
-
+func NewAuthService(authrepo voters.VotersRepository) *VoterServiceImple {
+	return &VoterServiceImple{voterRepo: authrepo}
+}
+func (asi *VoterServiceImple) Voters() ([]entities.Voters, []error) {
+	voters, errs := asi.voterRepo.Voters()
+	if len(errs) > 0 {
+		log.Println("serv err")
+		return nil, errs
+	}
+	return voters, errs
 }
 
-func (vs *VoteServiceImple) IncrementCounter(prtyName string) (*entities.RegParties, []error) { //prtyname comes from button clicked
-
-	vte, errs := vs.voteRepo.GetCounter(prtyName)
-	vte.Counter++
-
-	vs.CheckVoter("")
-	//vte.counter++
-	vs.voteRepo.IncrementCounter(vte)
-
+func (asi *VoterServiceImple) Voter(id uint) (*entities.Voters, []error) {
+	vtr, errs := asi.voterRepo.Voter(id)
 	if len(errs) > 0 {
 		return nil, errs
 	}
-	return vte, nil
+	return vtr, nil
 }
-
-func (vs *VoteServiceImple) Canidates() ([]entities.RegParties, []error) {
-
-	canid, errs := vs.voteRepo.Canidates()
-
+func (asi *VoterServiceImple)VoterByGID(gid string) (*entities.Voters,[]error){
+	vtr, errs := asi.voterRepo.VoterByGID(gid)
+	if len(errs) >0{
+		return nil,errs
+	}
+	return vtr,errs
+}
+func (asi *VoterServiceImple) UpdateVoter(pst *entities.Voters) (*entities.Voters, []error) {
+	vtr, errs := asi.voterRepo.UpdateVoter(pst)
 	if len(errs) > 0 {
-
 		return nil, errs
 	}
-	return canid, errs
+	return vtr, nil
+}
+func (asi *VoterServiceImple) Deletevoter(id uint) (*entities.Voters, []error) {
+	vtr, errs := asi.voterRepo.Deletevoter(id)
+	if len(errs) > 0 {
+		return nil, errs
+	}
+	return vtr, nil
+}
+func (asi *VoterServiceImple) StoreVoter(pst *entities.Voters) (*entities.Voters, []error) {
+	vtr, errs := asi.voterRepo.StoreVoter(pst)
+	if len(errs) > 0 {
+		return nil, errs
+	}
+	return vtr, nil
+}
+func (asi *VoterServiceImple)PhoneExists(uname string) bool{
+	exists := asi.voterRepo.PhoneExists(uname)
+	return exists
+}
+func (asi *VoterServiceImple)GIDExists(gid string) bool{
+	exists := asi.voterRepo.GIDExists(gid)
+	return exists
+}
+func (asi *VoterServiceImple)VoterRoles(voters *entities.Voters) ([]entities.Role,[]error){
+	voterRoles, errs := asi.voterRepo.VoterRoles(voters)
+	if len(errs) >0{
+		return nil,errs
+	}
+	return voterRoles,errs
 }
