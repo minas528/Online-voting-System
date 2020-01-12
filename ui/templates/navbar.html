@@ -62,10 +62,14 @@
             <a class="nav-link" href="/aboutus">ስለ እኛ<span class="sr-only"></span></a>
         </li>
     </ul>
-{{/*    <form class="form-inline my-2 my-lg-0">*/}}
-{{/*      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">*/}}
-{{/*      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>*/}}
-{{/*    </form>*/}}
+      <a class="nav-link" href="signup"><button class="btn btn-outline-success my-2 my-sm-0" type="button" > Sign up</button></a>
+      <a class="nav-link" href="login"><button class="btn btn-outline-success my-2 my-sm-0" type="button" href="/login">Login</button></a>
+      <form method="POST" action="/logout" class="form-inline mt-2 mt-md-0">
+          <input type="hidden" name="_csrf" value="{{ .CSRF }}" />
+          <button class="btn btn-dark my-2 my-sm-0" type="submit">Logout</button>
+      </form>
+
+
   </div>
 </nav>
 {{end}}

@@ -11,6 +11,7 @@
         </div>
         <div class="container">
             <form method="POST" action="/upost" enctype="multipart/form-data">
+                <input type="hidden" name="_csrf" id="_csrf" value="{{ .CSRF }}" />
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">የፓርቲ ስም</label>
                     <div class="col-sm-10">
