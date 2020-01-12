@@ -39,67 +39,46 @@ func index(w http.ResponseWriter, r *http.Request)  {
 func newEvnet(w http.ResponseWriter, req *http.Request) {
 	temp.ExecuteTemplate(w, "new.event", nil)
 }
-<<<<<<< HEAD
+
 
 func parties(w http.ResponseWriter, r *http.Request){
 	temp.ExecuteTemplate(w, "parties",nil)
 }
 
-func createTables(dbconn *gorm.DB) []error  {
-	errs := dbconn.CreateTable(&entities.Voters{},&entities.Session{},&entities.Role{},&entities.Parties{},&entities.Events{},&entities.RegParties{},&entities.RegVoters{}).GetErrors()
-	if errs != nil{
+func createTables(dbconn *gorm.DB) []error {
+	errs := dbconn.CreateTable(&entities.Voters{}, &entities.Session{}, &entities.Role{}, &entities.Parties{}, &entities.Events{}, &entities.RegParties{}, &entities.RegVoters{}).GetErrors()
+	if errs != nil {
 		return errs
 	}
 	return nil
-=======
+}
 func parties(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "parties", nil)
 }
 func RoutesForAdmin() {
->>>>>>> 345e47e2cd443abfe01044e928281286fec9a418
 }
 
 func main() {
 	scrfSingKey := []byte(rtoken.GenerateRandomID(32))
 
-<<<<<<< HEAD
+
 	dbconn, err := gorm.Open("postgres", "postgres://postgres:minpass@localhost:9090/electe?sslmode=disable")
-=======
+
 	dbconn, err := gorm.Open("postgres", "postgres://postgres:minpass@localhost:9090/votes?sslmode=disable")
->>>>>>> 345e47e2cd443abfe01044e928281286fec9a418
+
 	if err != nil {
 		panic(err)
 	}
 
 	defer dbconn.Close()
 
-<<<<<<< HEAD
+
 	//createTables(dbconn)
 
 	sessionRepo := authRepo.NewSessionGormRepo(dbconn)
 	sessionServ := authServ.NewSessionService(sessionRepo)
 
-=======
-<<<<<<< HEAD
-	/*errs := dbconn.CreateTable(&entities.Parties{}).GetErrors()
-=======
-<<<<<<< HEAD
-	//errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
-	//if 0 < len(errs) {
-	//	panic(errs)
-	//}
-=======
-	/*errs := dbconn.CreateTable(&entities.Events{}).GetErrors()
->>>>>>> 16e7adbc68177c043a8fc6c3f98223984f6335a7
-	if 0 < len(errs) {
-		panic(errs)
-	}*/
-	// errs := dbconn.CreateTable(&entities.RegParties{}, &entities.RegVoters{}).GetErrors()
-	// if 0 < len(errs) {
-	//	panic(errs)
-	// }
->>>>>>> 2bc9a017d1f15b2af48c0a8c30a8390b93e967e3
->>>>>>> 345e47e2cd443abfe01044e928281286fec9a418
+
 
 	postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)
@@ -126,29 +105,25 @@ func main() {
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
 	//http.HandleFunc("/upost", postHandler.PostNew)
 	http.HandleFunc("/posts", postHandler.Posts)
-<<<<<<< HEAD
+
 	http.HandleFunc("/", signup)
-=======
+
 
 	http.HandleFunc("/parties", partyHandler.PartiesNew)
 	http.HandleFunc("/party", partyHandler.Parties)
 	http.HandleFunc("/", index)
->>>>>>> 345e47e2cd443abfe01044e928281286fec9a418
-	//http.HandleFunc("/newevent",newEvnet)
 
 	http.HandleFunc("/events", eventHandle.Events)
 	http.HandleFunc("/newevent", eventHandle.EventNew)
 
-<<<<<<< HEAD
 	http.HandleFunc("/signup", vth.Signup)
 	http.HandleFunc("/voters", login)
 	http.HandleFunc("/login", vth.Login)
 	http.Handle("/logout",vth.Authenticated(http.HandlerFunc(vth.Logout)))
 	http.Handle("/admin/addposts",vth.Authenticated(vth.Authorized(http.HandlerFunc(aph.PostNew))))
-=======
+
 	http.HandleFunc("/login", login)
 	http.HandleFunc("/signup", signup)
->>>>>>> 345e47e2cd443abfe01044e928281286fec9a418
 	http.ListenAndServe(":8181", nil)
 	
 }
