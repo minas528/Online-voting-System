@@ -1,7 +1,11 @@
 {{ define "admin.user.update.layout" }}
 {{ template "admin.navbar" . }}
 {{ template "admin.user.update.content" . }}
+<<<<<<< HEAD
 {{ template "footer.l" . }}
+=======
+{{ template "admin.footer" . }}
+>>>>>>> 5f52778bf8b91171d3c9ca582afe023955431463
 {{ end }}
 
 {{ define "admin.user.update.content"}}
@@ -36,6 +40,7 @@
             {{end}}
             <input type='text' class='form-control' name='fullname' id='fullname' value='{{ .Values.Get "fullname" }}'
                 required autofocus placeholder='Full Name'>
+<<<<<<< HEAD
 
             <div class="col-auto">
                 <label for='email' class='col-form-label'>መታወቂያ ቁጥር</label>
@@ -71,6 +76,25 @@
                    required placeholder='የይለፍ ቃል አረጋግጥ'>
         </div>
 
+=======
+        </div>
+        <div class="col-auto">
+            <label for='email' class='col-form-label'>Email</label>
+            {{with .VErrors.Get "email"}}
+            <label class="text-danger">{{.}}</label>
+            {{end}}
+            <input type='email' class='form-control' name='email' id='email' value='{{ .Values.Get "email" }}' required
+                placeholder='Email Address'>
+        </div>
+        <div class="col-auto">
+            <label for='phone' class='col-form-label'>Phone</label>
+            {{with .VErrors.Get "phone"}}
+            <label class="text-danger">{{.}}</label>
+            {{end}}
+            <input type='text' class='form-control' name='phone' id='phone' value='{{ .Values.Get "phone" }}' required
+                placeholder='Phone Number'>
+        </div>
+>>>>>>> 5f52778bf8b91171d3c9ca582afe023955431463
         <div class="col-auto">
             <label for='role' class='col-form-label'>Role (Current: {{ .Values.Get "rolename" }})</label>
             {{with .VErrors.Get "role"}}

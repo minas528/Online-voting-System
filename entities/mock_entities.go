@@ -68,5 +68,3 @@ var SessionMock = Session {
 	Expires :   1,
 	SigningKey: []byte{},
 }
-
-

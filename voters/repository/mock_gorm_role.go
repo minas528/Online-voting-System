@@ -4,7 +4,9 @@ package repository
 import (
 	"errors"
 	"github.com/jinzhu/gorm"
+
 "github.com/minas528/Online-voting-System/entities"
+
 )
 
 type MockRoleGormRepo struct {
