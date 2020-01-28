@@ -75,7 +75,7 @@ func main() {
 
 	postRepo := postRepo.NewPostGormRepo(dbconn)
 	postserv := postServ.NewPostService(postRepo)
-	postHandler := handler.NewPostHandler(temp, postserv)
+	//postHandler := handler.NewPostHandler(temp, postserv)
 
 	//adpsthand := handler.NewAdminPostHandler(temp,postserv,scrfSingKey)
 
@@ -101,6 +101,7 @@ func main() {
 	http.Handle("/assets/", http.StripPrefix("/assets", fs))
 
 
+	http.HandleFunc("/posts",aph.Posts)
 
 	http.Handle("/admin/users", vth.Authenticated(vth.Authorized(http.HandlerFunc(vth.AdminUsers))))
 	http.Handle("/admin/users/new", vth.Authenticated(vth.Authorized(http.HandlerFunc(vth.AdminUsersNew))))
@@ -123,7 +124,7 @@ func main() {
 	http.Handle("/home",vth.Authenticated(vth.Authorized(http.HandlerFunc(signup))))
 	http.Handle("/events",vth.Authenticated(vth.Authorized(http.HandlerFunc(eventHandle.Events))))
 	http.Handle("/vote",vth.Authenticated(vth.Authorized(http.HandlerFunc(vth.Vote))))
-	http.Handle("/posts",vth.Authenticated(vth.Authorized(http.HandlerFunc(postHandler.Posts))))
+	//http.Handle("/posts",vth.Authenticated(vth.Authorized(http.HandlerFunc(postHandler.Posts))))
 	http.Handle("/register",vth.Authenticated(vth.Authorized(http.HandlerFunc(vth.Register4Event))))
 	http.Handle("/parties",vth.Authenticated(vth.Authorized(http.HandlerFunc(partyHandler.Parties))))
 	http.Handle("/logout",vth.Authenticated(http.HandlerFunc(vth.Logout)))
@@ -131,7 +132,7 @@ func main() {
 
 	http.HandleFunc("/login", vth.Login)
 	http.HandleFunc("/signup", vth.Signup)
-	http.HandleFunc("/",test)
+	http.HandleFunc("/",signup)
 
 
 
