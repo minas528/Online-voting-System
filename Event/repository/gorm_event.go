@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"../../../../../github.com/minas528/Online-voting-System/entities"
+	"github.com/minas528/Online-voting-System/entities"
 	"github.com/jinzhu/gorm"
 )
 

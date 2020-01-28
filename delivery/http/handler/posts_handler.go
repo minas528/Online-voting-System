@@ -9,7 +9,12 @@ import (
 	"os"
 	"path/filepath"
 
+<<<<<<< HEAD
+	"github.com/minas528/Online-voting-System/entities"
+	"github.com/minas528/Online-voting-System/post"
+=======
 	"../../../../../../github.com/minas528/Online-voting-System/post"
+>>>>>>> 345e47e2cd443abfe01044e928281286fec9a418
 )
 
 type PostsHandler struct {

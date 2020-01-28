@@ -11,6 +11,17 @@
 
         <div class="container">
                 <div class="mb-3 text-center card-deck" style="margin-bottom: 1em">
+    {{ if not .}}
+
+        <main role="main" class="flex-shrink-0">
+            <div class="container">
+                <h1 class="mt-5">ምንም ልጥፎች የሉም</h1>
+                <p class="lead"></p>
+
+            </div>
+        </main>
+
+    {{else}}
                     {{range .}}
                     <div class="card  text-xs-center " style="margin-bottom: 3em">
                         <div class="card-header bg-success">{{ .Name }}</div>
@@ -20,13 +31,14 @@
                         <div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <strong>Starting Date</strong> {{ .StartTime}}</li>
-                                <li class="list-group-item"><strong>Ending Date</strong> {{ .EndingTime}}</li>
+                                    <strong>የሚጀመርበት ቀን</strong> {{ .StartTime}}</li>
+                                <li class="list-group-item"><strong>ማብቂያ ቀን</strong> {{ .EndingTime}}</li>
                             </ul>
                         </div>
-                        <div class="card-block" style="align-items: center;align-content: center;alignment: center"><a href="#"class="btn badge-danger btn-secondary-outline">Register</a></div>
+                        <div class="card-block" style="align-items: center;align-content: center;alignment: center"><a href="#"class="btn badge-danger btn-secondary-outline">  ይመዝገቡ</a></div>
                     </div>
                     {{end}}
+                        {{end}}
                 </div>
 
             </div>

@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"../../../../../../github.com/minas528/Online-voting-System/entities"
-	"../../../../../../github.com/minas528/Online-voting-System/votes"
+	"github.com/minas528/Online-voting-System/entities"
+	"github.com/minas528/Online-voting-System/votes"
 )
 
 type VotesHandler struct {

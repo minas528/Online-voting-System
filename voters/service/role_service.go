@@ -1,22 +1,21 @@
 package service
 
 import (
-	"github.com/minase528/Online-voting-System/entities"
-	"github.com/minase528/Online-voting-System/authentication"
+	"github.com/minas528/Online-voting-System/entities"
+	"github.com/minas528/Online-voting-System/voters"
 )
 
-// RoleService implements menu.RoleService interface
 type RoleService struct {
-	roleRepo user.RoleRepository
+	roleRepo voters.RoleRepository
 }
 
 // NewRoleService  returns new RoleService
-func NewRoleService(RoleRepo user.RoleRepository) user.RoleService {
+func NewRoleService(RoleRepo voters.RoleRepository) voters.RoleService {
 	return &RoleService{roleRepo: RoleRepo}
 }
 
 // Roles returns all stored roles
-func (rs *RoleService) Roles() ([]entity.Role, []error) {
+func (rs *RoleService) Roles() ([]entities.Role, []error) {
 
 	rls, errs := rs.roleRepo.Roles()
 	if len(errs) > 0 {
@@ -27,7 +26,7 @@ func (rs *RoleService) Roles() ([]entity.Role, []error) {
 }
 
 // RoleByName returns a role identified by its name
-func (rs *RoleService) RoleByName(name string) (*entity.Role, []error) {
+func (rs *RoleService) RoleByName(name string) (*entities.Role, []error) {
 	role, errs := rs.roleRepo.RoleByName(name)
 	if len(errs) > 0 {
 		return nil, errs
@@ -36,7 +35,7 @@ func (rs *RoleService) RoleByName(name string) (*entity.Role, []error) {
 }
 
 // Role retrievs a given user role by its id
-func (rs *RoleService) Role(id uint) (*entity.Role, []error) {
+func (rs *RoleService) Role(id uint) (*entities.Role, []error) {
 	rl, errs := rs.roleRepo.Role(id)
 	if len(errs) > 0 {
 		return nil, errs
@@ -46,7 +45,7 @@ func (rs *RoleService) Role(id uint) (*entity.Role, []error) {
 }
 
 // UpdateRole updates a given user role
-func (rs *RoleService) UpdateRole(role *entity.Role) (*entity.Role, []error) {
+func (rs *RoleService) UpdateRole(role *entities.Role) (*entities.Role, []error) {
 	rl, errs := rs.roleRepo.UpdateRole(role)
 	if len(errs) > 0 {
 		return nil, errs
@@ -56,7 +55,7 @@ func (rs *RoleService) UpdateRole(role *entity.Role) (*entity.Role, []error) {
 }
 
 // DeleteRole deletes a given user role
-func (rs *RoleService) DeleteRole(id uint) (*entity.Role, []error) {
+func (rs *RoleService) DeleteRole(id uint) (*entities.Role, []error) {
 
 	rl, errs := rs.roleRepo.DeleteRole(id)
 	if len(errs) > 0 {
@@ -66,7 +65,7 @@ func (rs *RoleService) DeleteRole(id uint) (*entity.Role, []error) {
 }
 
 // StoreRole stores a given user role
-func (rs *RoleService) StoreRole(role *entity.Role) (*entity.Role, []error) {
+func (rs *RoleService) StoreRole(role *entities.Role) (*entities.Role, []error) {
 
 	rl, errs := rs.roleRepo.StoreRole(role)
 	if len(errs) > 0 {

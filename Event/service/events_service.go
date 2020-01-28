@@ -3,8 +3,8 @@ package service
 import (
 	"log"
 
-	"../../../../../github.com/minas528/Online-voting-System/Event"
-	"../../../../../github.com/minas528/Online-voting-System/entities"
+	"github.com/minas528/Online-voting-System/Event"
+	"github.com/minas528/Online-voting-System/entities"
 )
 
 type EventServiceImple struct {

@@ -1,27 +1,17 @@
 package service
 
 import (
-<<<<<<< HEAD
-	"../../../../../github.com/minas528/Online-voting-System/entities"
-	"../../../../../github.com/minas528/Online-voting-System/votes"
-=======
-<<<<<<< HEAD
 	"github.com/minas528/Online-voting-System/voters"
 	"github.com/minas528/Online-voting-System/entities"
-	"log"
-=======
-	"github.com/minas528/Online-voting-System/entities"
 	"github.com/minas528/Online-voting-System/votes"
->>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
->>>>>>> 8ba8eb050e4b504cae99e995a2fe7e64222d1378
+	"log"
 )
 
 type VoterServiceImple struct {
 	voterRepo voters.VotersRepository
 }
 
-<<<<<<< HEAD
-=======
+
 func NewVoteService(voterepo votes.VoteRepository) *VoteServiceImple {
 	return &VoteServiceImple{voteRepo: voterepo}
 }
@@ -37,15 +27,15 @@ func (vs *VoteServiceImple) CheckVoter(voteID int) bool {
 		return false
 	}
 	return true
->>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
+}
 
 func NewAuthService(authrepo voters.VotersRepository) *VoterServiceImple {
 	return &VoterServiceImple{voterRepo: authrepo}
 }
-<<<<<<< HEAD
+
 func (asi *VoterServiceImple) Voters() ([]entities.Voters, []error) {
 	voters, errs := asi.voterRepo.Voters()
-=======
+}
 
 func (vs *VoteServiceImple) IncrementCounter(prtyName string) (*entities.RegParties, []error) { //prtyname comes from button clicked
 
@@ -55,7 +45,6 @@ func (vs *VoteServiceImple) IncrementCounter(prtyName string) (*entities.RegPart
 	//vte.counter++
 	vs.voteRepo.IncrementCounter(vte)
 
->>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
 	if len(errs) > 0 {
 		log.Println("serv err")
 		return nil, errs
@@ -63,7 +52,6 @@ func (vs *VoteServiceImple) IncrementCounter(prtyName string) (*entities.RegPart
 	return voters, errs
 }
 
-<<<<<<< HEAD
 func (asi *VoterServiceImple) Voter(id uint) (*entities.Voters, []error) {
 	vtr, errs := asi.voterRepo.Voter(id)
 	if len(errs) > 0 {
@@ -80,12 +68,10 @@ func (asi *VoterServiceImple)VoterByGID(gid string) (*entities.Voters,[]error){
 }
 func (asi *VoterServiceImple) UpdateVoter(pst *entities.Voters) (*entities.Voters, []error) {
 	vtr, errs := asi.voterRepo.UpdateVoter(pst)
-=======
+}
 func (vs *VoteServiceImple) Parties() ([]entities.RegParties, []error) {
 
 	canid, errs := vs.voteRepo.Parties()
-
->>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
 	if len(errs) > 0 {
 		return nil, errs
 	}
