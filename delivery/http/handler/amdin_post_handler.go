@@ -5,6 +5,7 @@ import (
 	"github.com/minas528/Online-voting-System/rtoken"
 	"html/template"
 	"io"
+	"log"
 	"mime/multipart"
 	"net/http"
 	"net/url"
@@ -28,7 +29,8 @@ func NewAdminPostHandler(T *template.Template, PS post.PostService,csKey []byte)
 
 func (ph *AdminPostsHandler) Posts(w http.ResponseWriter, r *http.Request) {
 	posts, errs := ph.pstServ.Posts()
-	if errs !=nil {
+	if len(errs) >0 {
+		log.Println(errs)
 		http.Error(w,http.StatusText(http.StatusNotFound),http.StatusNotFound)
 	}
 	token, err := rtoken.CSRFToken(ph.csrfSignKey)
@@ -65,7 +67,7 @@ func (ph *AdminPostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 			VErrors:nil,
 			CSRF:token,
 		}
-		ph.tmpl.ExecuteTemplate(w,"upload.post",newPostForm)
+		ph.tmpl.ExecuteTemplate(w,"admin.upload.post",newPostForm)
 	}
 	if r.Method == http.MethodPost {
 		err := r.ParseForm()
@@ -79,14 +81,14 @@ func (ph *AdminPostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 		newPostForm.CSRF = token
 
 		if !newPostForm.Valid() {
-			ph.tmpl.ExecuteTemplate(w, "upload.post", newPostForm)
+			ph.tmpl.ExecuteTemplate(w, "admin.upload.post", newPostForm)
 			return
 		}
 
 		mf, fh, err := r.FormFile("vid")
 		if err != nil {
 			newPostForm.VErrors.Add("vid", "File error")
-			ph.tmpl.ExecuteTemplate(w, "upload.post", newPostForm)
+			ph.tmpl.ExecuteTemplate(w, "admin.upload.post", newPostForm)
 			return
 		}
 
@@ -104,7 +106,7 @@ func (ph *AdminPostsHandler) PostNew(w http.ResponseWriter, r *http.Request) {
 		if len(errs) > 0 {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		}
-		http.Redirect(w, r, "/posts", http.StatusSeeOther)
+		http.Redirect(w, r, "/admin/posts", http.StatusSeeOther)
 
 	}
 }

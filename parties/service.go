@@ -1,6 +1,6 @@
 package parties
 
-import "../../../../github.com/minas528/Online-voting-System/entities"
+import "github.com/minas528/Online-voting-System/entities"
 
 // PostService specifies post services
 type PartiesService interface {

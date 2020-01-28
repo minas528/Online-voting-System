@@ -30,7 +30,9 @@ func (sr *SessionGormRepo) Session(sessionID string) (*entities.Session, []error
 // StoreSession stores a given session
 func (sr *SessionGormRepo) StoreSession(session *entities.Session) (*entities.Session, []error) {
 	sess := session
+	//print("here in session")
 	errs := sr.conn.Save(sess).GetErrors()
+	println("miasn ",sess.UUID)
 	if len(errs) > 0 {
 		return nil, errs
 	}

@@ -1,9 +1,6 @@
-package voters
+package votes
 
-<<<<<<< HEAD
-import "../../../../github.com/minas528/Online-voting-System/entities"
-=======
-<<<<<<< HEAD
+
 import (
 	"github.com/minas528/Online-voting-System/entities"
 )
@@ -11,22 +8,20 @@ import (
 type VotersService interface {
 	Voters() ([]entities.Voters, []error)
 	Voter(id uint) (*entities.Voters, []error)
-	VoterByGID(gid string) (*entities.Voters,[]error)
+	VoterByGID(gid string) (*entities.Voters, []error)
 	UpdateVoter(voter *entities.Voters) (*entities.Voters, []error)
 	Deletevoter(id uint) (*entities.Voters, []error)
 	StoreVoter(voter *entities.Voters) (*entities.Voters, []error)
 	PhoneExists(uname string) bool
 	GIDExists(gid string) bool
-	VoterRoles(voters *entities.Voters) ([]entities.Role,[]error)
-=======
-import "github.com/minas528/Online-voting-System/entities"
->>>>>>> 8ba8eb050e4b504cae99e995a2fe7e64222d1378
+	VoterRoles(voters *entities.Voters) ([]entities.Role, []error)
+	StoreRegVoter(voter *entities.Voters) (*entities.Voters, []error)
+}
 
 type VoteService interface {
 	CheckVoter(voteID int) bool
 	IncrementCounter(prtyName string) (*entities.RegParties, []error)
 	Parties() ([]entities.RegParties, []error)
->>>>>>> 90ea9b8aaea637f705c6fe5b924c293b64b367db
 }
 
 

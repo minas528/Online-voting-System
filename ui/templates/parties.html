@@ -1,28 +1,22 @@
-{{ define "parties"}}
-    {{ template "nav-bar"}}
-    {{template "parties.content" .}}
-    {{template "footer.l"}}
-{{end}}
+{{/*{{ define "partiesss"}}*/}}
+{{/*    {{ template "nav-bar"}}*/}}
+{{/*    {{template "parties.content" .}}*/}}
+{{/*    {{template "footer.l"}}*/}}
+{{/*{{end}}*/}}
 
 {{define "parties.content" }}
     <section  class="mbr-section mbr-section-nopadding" id="msg-box5-0" data-rv-view="15" style="background-color: rgb(255, 255, 255); padding-top: 0rem; padding-bottom: 0rem;padding-left: 20%;padding-right: 20%">
 
         {{ range  . }}
 
-            <div class="container card border-dark shadow-sm" style="margin-bottom: 10px" >
-                <div class="row">
-                    <div  class="col-xs-12 col-lg-6 mbr-table-cell-lg image-size embed-responsive embed-responsive-16by9" style="width: 50%; height: 30%; align-items: center">
-                        <video controls loop class="embed-responsive-item em">
-                            <source src="../assets/vid/{{ .Vid }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="col-xs-12 col-lg-6 mbr-inner-padding text-xs-center mbr-table-cell-lg">
-                        <h3 class="mbr-section-title display-4">{{ .Name }}</h3>
-                        <small>{{ .Writer }}</small>
-                        <div class="lead"><p>{{ .Disc }}</p></div>
-                    </div>
-
+            <div class="card border-light shadow-sm" style="width: 18rem;">
+                <img src="../assets/party/{{.Logo}}" class="card-img-top" />
+                <input hidden name="eve_id" id="eve_id" value="{{.Event}}">
+                <input hidden name="prt_id" id="prt_id" value="{{.ID}}">
+                <div class="card-body">
+                    <h4 class="card-title">{{.Name}}</h4>
+                    <p class="card-text"> {{.Slogan}} </p>
+                    <a href="/vote"class="card-link">Vote</a>
                 </div>
             </div>
         {{ end }}

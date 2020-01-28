@@ -1,16 +1,16 @@
-{{ define "admin.upload.post" }}
+{{ define "admin.update.post" }}
     {{ template "admin.navbar" . }}
-    {{ template "post.upload.content" . }}
+    {{ template "post.update.content" . }}
     {{ template "footer.l" .}}
 {{end}}
 
-{{ define "post.upload.content" }}
+{{ define "post.update.content" }}
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h2>Add New Posts</h2>
+            <h2>Update New Posts</h2>
         </div>
         <div class="container">
-            <form method="POST" action="/admin/posts/new" enctype="multipart/form-data">
+            <form method="POST" action="/admin/posts/update" enctype="multipart/form-data">
                 <input type="hidden" name="_csrf" id="_csrf" value="{{ .CSRF }}" />
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">የፓርቲ ስም</label>

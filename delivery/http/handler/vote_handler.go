@@ -1,12 +1,12 @@
 package handler
 
 import (
+	"github.com/minas528/web_project/Online-voting-System/votes"
 	"html/template"
 	"log"
 	"net/http"
 
-	"github.com/minas528/Online-voting-System/entities"
-	"github.com/minas528/Online-voting-System/votes"
+	_ "github.com/minas528/Online-voting-System/votes/service"
 )
 
 type VotesHandler struct {
@@ -29,16 +29,17 @@ func (vh *VotesHandler) Vote(w http.ResponseWriter, r *http.Request) {
 }
 func (vh *VotesHandler) Chose(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		vte := entities.RegParties{}
-		vte.PartyName = r.FormValue("partyname")
-
-		_, errs := vh.vteServ.IncrementCounter(vte.PartyName)
-
-		if errs != nil {
-			panic(errs)
-		}
-
-		//http.Redirect(w, r, "/vote", http.StatusSeeOther)
+		//vte := entities.RegParties{}
+		//vte.PartyName = r.FormValue("partyname")
+		//
+		//_, errs := vh.vteServ.IncrementCounter(vte.PartyName)
+		//
+		//if errs != nil {
+		//	panic(errs)
+		//}
+		//
+		////http.Redirect(w, r, "/vote", http.StatusSeeOther)
 	}
 
 }
+

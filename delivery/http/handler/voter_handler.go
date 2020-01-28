@@ -2,13 +2,13 @@ package handler
 
 import (
 	"context"
-	"github.com/betsegawlemma/restaurant/entity"
+	"fmt"
+	"github.com/minas528/Online-voting-System/entities"
 	"github.com/minas528/Online-voting-System/form"
 	"github.com/minas528/Online-voting-System/permission"
 	"github.com/minas528/Online-voting-System/rtoken"
 	"github.com/minas528/Online-voting-System/session"
 	"github.com/minas528/Online-voting-System/voters"
-	"github.com/minas528/Online-voting-System/entities"
 	"golang.org/x/crypto/bcrypt"
 	"html/template"
 	"log"
@@ -83,6 +83,7 @@ func (uh *VoterHandler) Authorized(next http.Handler) http.Handler {
 	})
 }
 
+
 func (uh *VoterHandler) Login(w http.ResponseWriter, r *http.Request) {
 	token, err := rtoken.CSRFToken(uh.csrfSignKey)
 	if err != nil {
@@ -126,16 +127,20 @@ func (uh *VoterHandler) Login(w http.ResponseWriter, r *http.Request) {
 		uh.loggedInVoter = usr
 		claims := rtoken.Claims(usr.GID, uh.voterSess.Expires)
 		session.Create(claims, uh.voterSess.UUID, uh.voterSess.SigningKey, w)
+
 		newSess, errs := uh.sessionService.StoreSession(uh.voterSess)
+
 		if len(errs) > 0 {
 			loginForm.VErrors.Add("generic", "Failed to store session")
 			uh.tmpl.ExecuteTemplate(w, "login.layout", loginForm)
 			return
 		}
 		uh.voterSess = newSess
+
+		//fmt.Printf("session val :%s", newSess.UUID)
 		roles, _ := uh.voterserv.VoterRoles(usr)
 		if uh.checkAdmin(roles) {
-			http.Redirect(w, r, "/admin", http.StatusSeeOther)
+			http.Redirect(w, r, "/admin/users", http.StatusSeeOther)
 			return
 		}
 		http.Redirect(w, r, "/", http.StatusSeeOther)
@@ -144,11 +149,14 @@ func (uh *VoterHandler) Login(w http.ResponseWriter, r *http.Request) {
 
 
 func (uh *VoterHandler) Logout(w http.ResponseWriter, r *http.Request) {
-	userSess, _ := r.Context().Value(ctxVoterSessionKey).(*entity.Session)
+	userSess, _ := r.Context().Value(ctxVoterSessionKey).(*entities.Session)
+	fmt.Println("gotten:", userSess.UUID)
 	session.Remove(userSess.UUID, w)
 	uh.sessionService.DeleteSession(userSess.UUID)
 	http.Redirect(w, r, "/login", http.StatusSeeOther)
+
 }
+
 
 
 func (uh *VoterHandler) Signup(w http.ResponseWriter, r *http.Request) {
@@ -251,6 +259,63 @@ func (uh *VoterHandler) loggedIn(r *http.Request) bool {
 		return false
 	}
 	return true
+}
+
+
+
+func (uh *VoterHandler) Register4Event(w http.ResponseWriter,r *http.Request)   {
+
+	gotId := r.FormValue("id")
+	eventID,_ := strconv.Atoi(gotId)
+
+	event, errs := uh.voterserv.CheckEvent(uint(eventID))
+	if len(errs )>0{
+		panic(errs)
+	}
+	println(event.Name)
+	regVoter := entities.RegVoters{
+		VoterRefer:uh.loggedInVoter.ID,
+		Event: *event,
+		Voters: *uh.loggedInVoter,
+		EventRefer:int(event.ID),
+	}
+	vt ,errs := uh.voterserv.GetRegVotersByID(uh.loggedInVoter.ID)
+	if vt ==  nil {
+		_,errs = uh.voterserv.StoreRegVoter(&regVoter)
+		if len(errs)>0 {
+			panic(errs)
+		}
+	}
+
+	uh.tmpl.ExecuteTemplate(w,"votes.minas",nil)
+
+}
+func (uh *VoterHandler) Vote(w http.ResponseWriter,r *http.Request)  {
+	fmt.Println("form vote")
+	voter,errs := uh.voterserv.GetRegVotersByID(uh.loggedInVoter.ID)
+	//got := r.FormValue("prt_id")
+	//goteve := r.FormValue("eve_id")
+	//eventId,_:= strconv.Atoi(goteve)
+	//partyId ,_ := strconv.Atoi(got)
+
+
+	party ,errs := uh.voterserv.GetRegPartyByID(1)
+	//fmt.Println(eventId)
+	event ,errs := uh.voterserv.CheckEvent(uint(1))
+	fmt.Println(voter.ID)
+	fmt.Println(party)
+	fmt.Println(event)
+	errs = uh.voterserv.Vote(party.ID,int(event.ID),voter.ID)
+
+
+	if len(errs) >0{
+		panic(errs)
+	}
+
+	res := voter.ID
+	if res == 1{
+		uh.tmpl.ExecuteTemplate(w,"votes",nil)
+	}
 }
 
 func (uh *VoterHandler) AdminUsers(w http.ResponseWriter, r *http.Request) {
@@ -356,12 +421,13 @@ func (uh *VoterHandler) AdminUsersNew(w http.ResponseWriter, r *http.Request) {
 			Password: string(hashedPassword),
 			RoleID:   uint(roleID),
 		}
+		log.Println(user.Password)
 		_, errs := uh.voterserv.StoreVoter(user)
 		if len(errs) > 0 {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			return
 		}
-		http.Redirect(w, r, "/admin/voters", http.StatusSeeOther)
+		http.Redirect(w, r, "/admin/users", http.StatusSeeOther)
 	}
 }
 

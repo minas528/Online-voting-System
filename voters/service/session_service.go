@@ -26,6 +26,7 @@ func (ss *SessionServiceImpl) Session(sessionID string) (*entities.Session, []er
 // StoreSession stores a given session
 func (ss *SessionServiceImpl) StoreSession(session *entities.Session) (*entities.Session, []error) {
 	sess, errs := ss.sessionRepo.StoreSession(session)
+	//print(sess.ID,sess.UUID)
 	if len(errs) > 0 {
 		return nil, errs
 	}

@@ -20,6 +20,7 @@ func NewEventHandler(T *template.Template, ES Event.EventService) *EventHandler 
 
 func (ph *EventHandler) Events(w http.ResponseWriter, r *http.Request) {
 	events, errs := ph.eveserv.Events()
+	print(len(events))
 	if len(errs) > 0 {
 		log.Println(errs)
 		panic(errs)

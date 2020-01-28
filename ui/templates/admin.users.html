@@ -1,78 +1,43 @@
-{{define "admin.voters"}}
-{{template "nav-bar" . }}
-{{template "admin.voters.content" . }}
-{{template "footer.l" . }}
-{{end}}
+{{ define "admin.users.layout" }}
+{{ template "admin.navbar" . }}
+{{ template "admin.users.content" . }}
+{{ template "footer.l" . }}
+{{ end }}
 
-{{define "admin.voters.content"}}
-<div class="col-md-12" id="content-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-
-            <div class="clearfix">
-                <h1 class="pull-left">Users</h1>
-
-                <div class="pull-right top-page-ui">
-                    <a href="#" class="btn btn-primary pull-right">
-                        <i class="fa fa-plus-circle fa-lg"></i> Add user
-                    </a>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="main-box clearfix">
-                        <div class="table-responsive">
-                            <table class="table user-list">
-                                <thead>
-                                <tr>
-                                    <th><span>User</span></th>
-                                    <th><span>Created</span></th>
-                                    <th class="text-center"><span>Status</span></th>
-                                    <th><span>Email</span></th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="img/samples/user-profile-1.png" alt=""/>
-                                        <a href="#" class="user-link">Mila Kunis</a>
-                                        <span class="user-subhead">Admin</span>
-                                    </td>
-                                    <td>
-                                        2013/08/08
-                                    </td>
-                                    <td class="text-center">
-                                        <span class="label label-default">Inactive</span>
-                                    </td>
-                                    <td>
-                                        <a href="#">mila@kunis.com</a>
-                                    </td>
-                                    <td style="width: 20%;">
-                                        
-                                        <a href="#" class="table-link">
-															<span class="fa-stack">
-																<i class="fa fa-square fa-stack-2x"></i>
-																<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-															</span>
-                                        </a>
-                                        <a href="#" class="table-link danger">
-															<span class="fa-stack">
-																<i class="fa fa-square fa-stack-2x"></i>
-																<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-															</span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{end}}
+{{ define "admin.users.content"}}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h2>Application Users</h2>
+  </div>
+  <div class="pt-3 pb-2 mb-3">
+    <a class="btn btn-primary btn-lg" href="/admin/users/new" role="button">New User</a>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">FullName</th>
+        <th scope="col">GID</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Password</th>
+        <th scope="col">RoleID</th>
+      </tr>
+    </thead>
+    <tbody>
+    sdfadf
+      {{ range .Users }}
+      <tr>
+        <td> {{ .ID }} </td>
+        <td> {{ .FullName }} </td>
+        <td> {{ .GID }} </td>
+        <td> {{ .Phone }} </td>
+        <td> {{ .Password }} </td>
+        <td> {{ .RoleID }} </td>
+        <td> <a href="/admin/users/update?id={{ .ID }}">Edit</a> </td>
+        <td> <a href="/admin/users/delete?id={{ .ID }}">Delete</a> </td>
+      </tr>
+      {{ end }}
+    </tbody>
+  </table>
+</main>
+{{ end }}

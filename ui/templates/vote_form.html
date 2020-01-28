@@ -9,27 +9,35 @@
 
 
 {{define "vote.list"}}
-    
+
+<section class="mbr-section mbr-section-small" id="pricing-table1-2" data-rv-view="3" style="background-color: rgb(255, 248, 255); padding-top: 4.5rem; padding-bottom: 4.5rem;">
+
+
+    <div class="container">
+        <div class="mb-3 text-center card-deck" style="margin-bottom: 1em">
 <div class="party-container">
     <form action="/">
         <!--<fieldset disabled="disabled">-->
         <!--if voters id valid/didnt vote before, unlock the vote page, maybe use if statment action-->
 
-        {{range .}}
+
         <div class="party-container">
-        <img id="party-image"  src= "../assets/images/{{.Logo}}"><br><!--logo-->
-       <p id="partyname">{{ .PartyName }}</p>
-        <!--partyName {{ .PartyName }}-->
+        <img id="party-image"  src= "../assets/images/sean-pollock-phyq704ffda-unsplash-2000x1333.jpg"><br><!--logo-->
+       <p id="partyname">Minasie</p>
+        <!--partyName Alemu-->
 
         <button id="party-button" type="submit" name="vote_button">Vote</button> <!--partyName-->
-    </div>
-        {{end}}
+
+
         <!--</fieldset>-->
     </form>
       
       
-        
 
+</div>
+        </div>
+    </div>
+</section>
 
 {{end}}
 

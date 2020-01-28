@@ -12,7 +12,7 @@ type permission struct {
 type authority map[string]permission
 
 var authorities = authority{
-	"/contact": permission{
+	"/home": permission{
 		roles:   []string{"USER"},
 		methods: []string{"GET", "POST"},
 	},
@@ -20,7 +20,12 @@ var authorities = authority{
 		roles:   []string{"USER"},
 		methods: []string{"GET", "POST"},
 	},
-	"/about": permission{
+	"/parties": permission{
+		roles:   []string{"USER"},
+		methods: []string{"GET"},
+	},
+
+	"/results": permission{
 		roles:   []string{"USER"},
 		methods: []string{"GET"},
 	},
@@ -32,11 +37,11 @@ var authorities = authority{
 		roles:   []string{"USER"},
 		methods: []string{"GET", "POST"},
 	},
-	"/menu": permission{
+	"/events": permission{
 		roles:   []string{"USER"},
 		methods: []string{"GET"},
 	},
-	"/order": permission{
+	"/posts": permission{
 		roles:   []string{"USER"},
 		methods: []string{"GET", "POST"},
 	},

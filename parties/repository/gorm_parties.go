@@ -18,7 +18,6 @@ func NewPartiesGormRepo(db *gorm.DB) *PartiesGormRepo {
 func (pRepo *PartiesGormRepo) Parties() ([]entities.Parties, []error) {
 	party := []entities.Parties{}
 	errs := pRepo.conn.Find(&party).GetErrors()
-	log.Println("in side of posts repo")
 
 	if len(errs) > 0 {
 		log.Println("faliled")
@@ -54,7 +53,6 @@ func (pRepo *PartiesGormRepo) DeleteParties(id int) (*entities.Parties, []error)
 }
 func (pRepo *PartiesGormRepo) StoreParties(Parties *entities.Parties) (*entities.Parties, []error) {
 	pst := Parties
-
 	errs := pRepo.conn.Create(pst).GetErrors()
 	if len(errs) > 0 {
 		return nil, errs

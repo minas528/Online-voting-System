@@ -1,6 +1,6 @@
 package parties
 
-import "../../../../github.com/minas528/Online-voting-System/entities"
+import "github.com/minas528/Online-voting-System/entities"
 
 // PartiesRepository specifies post related database operations
 type PartiesRepository interface {

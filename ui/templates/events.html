@@ -1,6 +1,6 @@
 {{ define "events"}}
 
-    {{template "nav-bar" .}}
+    {{template "nav-bar"}}
     {{template "events.content" . }}
     {{template "footer.l"}}
 {{end}}
@@ -35,7 +35,7 @@
                                 <li class="list-group-item"><strong>ማብቂያ ቀን</strong> {{ .EndingTime}}</li>
                             </ul>
                         </div>
-                        <div class="card-block" style="align-items: center;align-content: center;alignment: center"><a href="#"class="btn badge-danger btn-secondary-outline">  ይመዝገቡ</a></div>
+                        <div class="card-block" style="align-items: center;align-content: center;alignment: center"><a name="id" href="/events" class="btn badge-danger btn-secondary-outline">ይመዝገቡ</a></div>
                     </div>
                     {{end}}
                         {{end}}

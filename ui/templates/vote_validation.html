@@ -9,13 +9,22 @@
 
 
 {{define "vote.content"}}
-    
-    
-    <form action="">
-        Please enter your voters ID:<br>
-        <input type="text" name="voters_id"><br>
-      
-    </form>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            {{ range .Parties }}
+                <div class="card border-light shadow-sm" style="width: 18rem;">
+                    <img src="/assets/img/{{ .Logo }}" class="card-img-top" />
+                    <div class="card-body">
+                        <h4 class="card-title">{{ .Name }}</h4>
+                        <p class="card-text"> {{ .Slogan }} </p>
+                        <a href="#" class="card-link">Vote</a>
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+
+
     
 
 {{end}}

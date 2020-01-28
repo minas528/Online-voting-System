@@ -14,6 +14,17 @@ type VotersService interface {
 	PhoneExists(uname string) bool
 	GIDExists(gid string) bool
 	VoterRoles(voters *entities.Voters) ([]entities.Role,[]error)
+	Regster4Event(id uint) error
+	Vote(pid int,eid int,vid int) []error
+	CheckEvent(id uint) (*entities.Events, []error)
+	StoreRegVoter(voter *entities.RegVoters) (*entities.RegVoters, []error)
+	StoreRegParty(parties *entities.RegParties)(*entities.RegParties,[]error)
+	GetRegVoters()([]entities.RegVoters,[]error)
+	GetRegParites()([]entities.RegParties,[]error)
+	Votes()([]entities.Votes,[]error)
+	GetRegVotersByID(id int) (*entities.RegVoters,[]error)
+	GetRegPartyByID(id int)(*entities.Parties,[]error)
+	GetAlreadyVoted(id int)(*entities.Votes,[]error)
 }
 
 
