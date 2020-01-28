@@ -1,0 +1,76 @@
+{{ define "admin.navbar"  }}
+    <!doctype html>
+    <html class="no-js" lang="zxx">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>የምርጫ መተግበሪያ</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- <link rel="manifest" href="site.webmanifest"> -->
+        <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&subset=latin,cyrillic">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700&subset=latin,vietnamese,latin-ext">
+        <!-- Place favicon.ico in the root directory -->
+
+        <!-- CSS here -->
+        <link rel="stylesheet" href="../assets/css/vote.css"> <!--Herans css, DO NOT DELETE-->
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-iso.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap-datepicker3.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/themify-icons.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/nice-select.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/flaticon.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/gijgo.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/animate.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/slick.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/slicknav.css">
+        <link rel="stylesheet" href="../assets/bootstrap/css/style.css">
+        <link rel="stylesheet" href="../assets/tether/tether.min.css">
+        <link rel="stylesheet" href="../assets/puritym/css/style.css">
+        <link rel="preload" as="style" href="../assets/mobirise/css/mbr-additional.css">
+        <link rel="stylesheet" href="../assets/mobirise/css/mbr-additional.css" type="text/css">
+        <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    </head>
+
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="#">5kምርጫ</a>
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin">ዋና ገጽ <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/events">ምርጫዎች <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/posts"> ልጥፎች<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/parties">ድምጽ ይስጡ<span class="sr-only"></span></a>
+                </li><li class="nav-item active">
+                    <a class="nav-link" href="/admin/results">ውጤት<span class="sr-only"></span></a>
+                </li>
+            </ul>
+            <a class="nav-link" href="signup"><button class="btn btn-outline-success my-2 my-sm-0" type="button" > Sign up</button></a>
+            <a class="nav-link" href="login"><button class="btn btn-outline-success my-2 my-sm-0" type="button" href="/login">Login</button></a>
+            <form method="POST" action="/logout" class="form-inline mt-2 mt-md-0">
+                <input type="hidden" name="_csrf" value="{{ .CSRF }}" />
+                <button class="btn btn-dark my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+
+
+        </div>
+    </nav>
+{{end}}

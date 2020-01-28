@@ -1,0 +1,23 @@
+{{define "votes.minas"}}
+{{template "nav-bar" . }}
+{{template "votes.content" .}}
+{{template "footer.l"}}
+{{end}}
+{{define "votes.content" }}
+<!-- Card -->
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        {{ range .Parties }}
+            <div class="card border-light shadow-sm" style="width: 18rem;">
+                <img src="../assets/party/{{.Logo}}" class="card-img-top" />
+                <div class="card-body">
+                    <h4 class="card-title">{{.Name}}</h4>
+                    <p class="card-text"> {{.Slogan}} </p>
+                    <a href="#" class="card-link">Vote</a>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</div>
+
+{{end}}
