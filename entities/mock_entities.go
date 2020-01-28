@@ -21,7 +21,7 @@ var PartiesMock = Parties {
 	Name : "Mock party name",
 	Logo :  "Mock party logo",
 	Slogan: "Mock party slogan",
-	Scope:  "Mock party scope",
+	Event:  1,
 }
 
 var VotersMock = Voters {
@@ -35,9 +35,9 @@ var VotersMock = Voters {
 }
 var VotesMock = Votes {
 	ID: 1,
-	VID: "",
-	UserID: 1,
-	PartiesID: 1,
+	EventRefer: 1,
+	PartiesRefer: 1,
+	VoterRefer: 1,
 }
 var RoleMock = Role {
 	ID: 1,
@@ -46,19 +46,18 @@ var RoleMock = Role {
 
 var RegPartiesMock = RegParties {
 	ID: 1,
-	Logo :  "",
-	Motto :  "",
-	PartyName: "",
-	Counter:   1,
-	Event: Events{},
+	PartiesRefer :  1,
+	Parties :  Parties{},
 	EventRefer: 1,
+	Count:   1,
+	Event: Events{},
 }
 
 var RegVotersMock =RegVoters {
 	ID: 1,
-	Uname: "",
+	VoterRefer: 1,
+	Voters:Voters{},
 	flag:  false,
-	VotingID: "",
 	Event: Events{},
 	EventRefer: 1,
 
@@ -69,5 +68,3 @@ var SessionMock = Session {
 	Expires :   1,
 	SigningKey: []byte{},
 }
-
-
